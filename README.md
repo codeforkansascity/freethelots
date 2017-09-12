@@ -2,7 +2,7 @@
 Find outstanding claims on vacant property
 
 Project Description:
-We want to help expedite urban core land bank properties development to make Kansas City neighborhoods more livable.
+We want to help expedite urban core land bank properties development to make Kansas City neighborhoods more livable.  We want to make affordable housing available to single families and increase investment in the urban core.
 
 Stakeholders:
 NLS (Neighborhood Legal Support) - Clear title non-profits (legal aid, land bank, Dentons, etc.) but also could be used by people who are interested in tax sale properties.
