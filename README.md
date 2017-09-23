@@ -1,3 +1,5 @@
+[![Stories in Ready](https://badge.waffle.io/codeforkansascity/freethelots.png?label=ready&title=Ready)](http://waffle.io/codeforkansascity/freethelots)
+
 # freethelots
 Find outstanding claims on vacant property
 
