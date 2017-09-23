@@ -1,0 +1,7 @@
+version: '3'
+services:
+  postgres:
+    image: "postgres:9.6"
+    hostname: "postgres"
+    ports:
+      - "5432:5432"
