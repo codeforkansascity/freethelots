@@ -14,3 +14,15 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::get('/parties', 'LenderController@index');
+
+Route::get('/parcels', 'ParcelController@index');
+
+
+
+/*document_type
+parcel
+party
+transfer*/
