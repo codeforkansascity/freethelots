@@ -30,35 +30,81 @@
 
         <!-- Jumbotron for Title -->
         <div class="jumbotron" style="background-color: #20315A; color: white;">
-            <h1 class="text-center slowRainbow"><img src="train.png" height="100" width="100" alt="thomas the train"><strong>Data B Comin' In!!</strong><img src="train.png" height="100" width="100" alt="thomas the train"></h1>
+            <h1 class="text-center"><span class="text-info glyphicon glyphicon-home"></span><span class="text-info strong"> Free The Lots!</span>
+                <span class="text-info glyphicon glyphicon-home"></span>
+            </h1>
         </div>
+        <!-- /.jumbotron -->
 
-        <!-- This row will handle all of the retrieved articles -->
+
         <div class="row">
             <div class="col-sm-12">
                 <br>
-
-                <!-- This panel will initially be made up of a panel and wells for each of the articles retrieved -->
-                <div class="panel panel-primary">
-
-                    <!-- Panel Heading for the retrieved articles box -->
+                <!-- This panel will initially be made up of a panel and wells for each of the retrieved Properties-->
+                <div class="panel panel-warning">
+                    <!-- Panel Heading for the retrieved property data box -->
                     <div class="panel-heading">
-                        <h3 class="panel-title"><strong><i class="fa-list-alt"></i> Sum Info 'bout Dem Properties!</strong></h3>
+                        <h3 class="panel-title"><strong>Search Options</strong></h3>
                     </div>
-                    <!-- This main panel will hold each of the resulting articles -->
+                    <div class="row search-row">
+                        <div class="col-lg-12">
+                            <div class="input-group">
+                                <span class="input-group-btn">
+                      <button class="btn btn-info" type="button"><span class="glyphicon glyphicon-search"></span>                                Search!</button>
+                                </span>
+                                <input type="text" class="form-control" placeholder="Search for properties by: Lender name / Busisness Name">
+                            </div>
+                            <!-- /input-group -->
+                        </div>
+                        <!-- /.col-lg-12 -->
+                    </div>
+                    <!-- /.row -->
+                    <div class="row search-row">
+                        <div class="col-lg-12">
+                            <div class="input-group">
+                                <span class="input-group-btn">
+                          <button class="btn btn-info" type="button"><span class="glyphicon glyphicon-search"></span>                                Search!</button>
+                                </span>
+                                <input type="text" class="form-control" placeholder="Search for properties by: Individual Name [First, Last]">
+                            </div>
+                            <!-- /input-group -->
+                        </div>
+                        <!-- /.col-lg-12 -->
+                    </div>
+                    <!-- /.row -->
+                    <div class="btn-group" role="group" aria-label="...">
+                        <button type="button" class="btn btn-info btn-search">Claimants by Number of Claims</button>
+                        <!-- <button type="button" class="btn btn-info btn-search">Busisness Name</button> -->
+                        <!-- <button type="button" class="btn btn-info btn-search">Right</button> -->
+                    </div>
+                </div>
+                <!-- /panel -->
+            </div>
+            <!-- /col -->
+        </div>
+        <!-- /row -->
+
+        <!-- This row will handle all of the retrieved property data -->
+        <div class="row">
+            <div class="col-sm-12">
+                <br>
+                <!-- This panel will initially be made up of a panel and wells for each of the retrieved Properties-->
+                <div class="panel panel-success">
+                    <!-- Panel Heading for the retrieved property data box -->
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><strong>Property Info!</strong></h3>
+                    </div>
+                    <!-- This main panel will hold each of the resulting property's data -->
                     <div class="panel-body" id="well-section">
                         <div class="row header-row">
-                            <div class="col-xs-2 property-header">Instrument #</div>
-                            <div class="col-xs-3 property-header">Legal Sequence</div>
-                            <div class="col-xs-2 property-header">Lot</div>
-                            <div class="col-xs-2 property-header">Block</div>
-                            <div class="col-xs-3 property-header">Remarks</div>
-                            <!-- <div class="col-xs-2 employee-header">Total Billed ($)</div> -->
+                            <div class="col-xs-3 property-header">Claimant</div>
+                            <div class="col-xs-2 text-center property-header">Date of Claim</div>
+                            <div class="col-xs-3 text-center property-header">Document Type</div>
+                            <div class="col-xs-4 text-center property-header">Legal Description</div>
                         </div>
                     </div>
-
                     <div class="panel-body" id="property-container">
-
+                        <!-- DOM -->
                     </div>
                 </div>
             </div>
