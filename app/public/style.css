@@ -1,0 +1,72 @@
+/* Style to fix the issues of text extending past panel length */
+.panel-body a {
+    word-break: break-all;
+}
+.property-header{
+  	font-weight: bold;
+}
+.header-row{
+    border-bottom:  3px solid #CCC;
+}
+
+img {
+	margin: 10px;
+}
+
+.btn-search {
+    margin: 2px;
+}
+.search-row {
+    margin-bottom: 2px;
+    margin-top: 2px;
+}
+
+.slowRainbow {
+    font-weight: 900;
+    text-align: center;
+    /* Chrome, Safari, Opera */
+  -webkit-animation: rainbow 3s infinite; 
+  
+  /* Internet Explorer */
+  -ms-animation: rainbow 3s infinite;
+  
+  /* Standar Syntax */
+  animation: rainbow 3s infinite; 
+}
+.rainbow {
+    text-align: center;
+   /* Chrome, Safari, Opera */
+  -webkit-animation: rainbow 1s infinite; 
+  
+  /* Internet Explorer */
+  -ms-animation: rainbow 1s infinite;
+  
+  /* Standar Syntax */
+  animation: rainbow 1s infinite; 
+}
+
+/* Chrome, Safari, Opera */
+@-webkit-keyframes rainbow{
+	20%{color: red;}
+	40%{color: yellow;}
+	60%{color: green;}
+	80%{color: blue;}
+	100%{color: orange;}	
+}
+/* Internet Explorer */
+@-ms-keyframes rainbow{
+	20%{color: red;}
+	40%{color: yellow;}
+	60%{color: green;}
+	80%{color: blue;}
+	100%{color: orange;}	
+}
+
+/* Standar Syntax */
+@keyframes rainbow{
+	20%{color: red;}
+	40%{color: yellow;}
+	60%{color: green;}
+	80%{color: blue;}
+	100%{color: orange;}	
+}
