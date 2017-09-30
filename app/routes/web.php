@@ -16,9 +16,13 @@ Route::get('/', function () {
 });
 
 
-Route::get('/parties', 'LenderController@index');
+
+Route::get('/transfers', 'TransferController@index');
+Route::get('/parties', 'PartyController@index');
+Route::get('/parties/search/{search}', 'PartyController@search');
 
 Route::get('/parcels', 'ParcelController@index');
+Route::get('/parcels/search/{search}', 'ParcelController@searchGrantor');
 
 
 

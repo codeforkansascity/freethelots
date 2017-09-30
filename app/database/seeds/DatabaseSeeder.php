@@ -17,6 +17,15 @@ class DatabaseSeeder extends Seeder
         factory(App\Parcel::class, 100)->create();
         factory(App\Transfer::class, 200)->create();
 
+        DB::table('document_type')->insert([
+            'name' => 'Quick Claim Deed'
+        ]);
+        DB::table('document_type')->insert([
+            'name' => 'Warranty Deed'
+        ]);
+        DB::table('document_type')->insert([
+            'name' => 'Other Deed'
+        ]);
 
     }
 }

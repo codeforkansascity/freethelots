@@ -9,8 +9,7 @@ class TransferController extends Controller
 {
     protected function index(){
 
-        $transfers = Transfer::where('grantor_id', 12)->get();
-
+        $transfers = Transfer::all();
         return $transfers;
     }
 }
