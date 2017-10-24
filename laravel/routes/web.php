@@ -18,6 +18,7 @@ Route::get('/', function () {
 
 
 Route::get('/transfers', 'TransferController@index');
+
 Route::get('/parties', 'PartyController@index');
 Route::get('/parties/search/{search}', 'PartyController@search');
 
@@ -26,7 +27,5 @@ Route::get('/parcels/search/{search}', 'ParcelController@searchGrantor');
 
 
 
-/*document_type
-parcel
-party
-transfer*/
+
+

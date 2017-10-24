@@ -21,12 +21,12 @@ class PartyController extends Controller
 
         $split = explode(',', $search);
 
-        /* Uses wildcards searches for partial match */
+        /* Uses case insensitive wildcards searches for partial match */
         if(count($split) > 1){
-            $parties = Party::where( 'first_name', 'like' , '%'.$split[0].'%' )->orWhere('last_name', 'like', '%'.$split[1].'%' )->get();
+            $parties = Party::where( 'first_name', 'ilike' , '%'.$split[0].'%' )->orWhere('last_name', 'ilike', '%'.$split[1].'%' )->get();
         }
         else{
-            $parties = Party::where( 'first_name', 'like' , '%'.$split[0].'%' )->orWhere('last_name', 'like', '%'.$split[0].'%' )->get();
+            $parties = Party::where( 'first_name', 'ilike' , '%'.$split[0].'%' )->orWhere('last_name', 'ilike', '%'.$split[0].'%' )->get();
         }
 
         return $parties;

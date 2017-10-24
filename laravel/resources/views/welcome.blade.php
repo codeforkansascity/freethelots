@@ -63,9 +63,9 @@
                     <div class="col-lg-12">
                         <div class="input-group">
                                 <span class="input-group-btn">
-                          <button class="btn btn-info" type="button"><span class="glyphicon glyphicon-search"></span>                                Search!</button>
+                          <button class="btn btn-info" type="button" onclick="searchParcels()"><span class="glyphicon glyphicon-search" ></span>                                Search!</button>
                                 </span>
-                            <input type="text" class="form-control" placeholder="Search for properties by: Individual Name [First, Last]">
+                            <input id="individual_name" type="text" class="form-control" placeholder="Search for properties by: Individual Name [First, Last]">
                         </div>
                         <!-- /input-group -->
                     </div>
@@ -124,6 +124,40 @@
 <script src="https://code.jquery.com/jquery.js"></script>
 <!-- Code to a JavaScript File -->
 <!-- script src="app.js"></script -->
+<script>
+
+    /**
+     * ROUTES
+     * /parcels #all parcels
+     * /parcels/search/'name' #searches for parcels matching name
+     * /parties #all parties
+     * /parties/search/
+     */
+    /* Example Request */
+    function searchParcels() {
+        var search = $('#individual_name').val();
+        $.get('/parcels/search/'+search, function (data) {
+            console.log(data);
+            var property_container = $('#property-container');
+            property_container.empty();
+            data.forEach(function (row) {
+                console.log(row);
+                var legal = row['town']+ ';' + row['subdivision']+ ';' + row['lot']+ ';' + row['lotto'] ;
+                property_container.append('<div id="item-'+ row['transfer_id']+'" class="row"></div>');
+
+                var item = $('#item-'+ row['transfer_id']);
+                item.append('<div class="col-xs-3 ">'+ row['first_name']+' '+ row['last_name'] +'</div>');
+                item.append('<div class="col-xs-2 text-center ">'+ row['date_received'] +'</div>');
+                item.append('<div class="col-xs-3 text-center ">'+ row['name'] +'</div>');
+                item.append('<div class="col-xs-4 ">'+ legal +'</div>');
+                property_container.append('<div class="col-xs-12"><hr></div>');
+
+            })
+
+        })
+    }
+
+</script>
 
 </body>
 
