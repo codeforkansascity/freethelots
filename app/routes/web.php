@@ -46,30 +46,30 @@ Route::get('/test', function (){
 
         $first = substr(trim($part), 0, 3);
 
-        if(in_array($first, [ 'SBD', 'LT ', 'BLK'])){
+        if(in_array($first, [ 'CIT','SBD', 'LT ', 'BLK'])){
             $parsed .= $part.';';
         }
     }
     $parsed = rtrim($parsed, ';');
 
 
-    $regular_count = DB::table('deeds')
+    $regular = DB::table('deeds')
         ->select('combined_legal')
         ->where('combined_legal',  $legal->combined_legal)
         ->orderby('date_received')
         ->get();
 
 
-    $parsed_count =  DB::table('deeds')
+    $parsed =  DB::table('deeds')
         ->select('combined_legal')
-        ->where('combined_legal', 'like', '%'.$parsed.'%')
+        ->where('combined_legal', 'like', $parsed.'%')
         ->get();
 
-    $extra_results = $parsed_count->count() - $regular_count->count();
+    $extra_results = $parsed->count() - $regular->count();
     $time_end = microtime(true);
     $time = round($time_end - $time_start, 2). ' sec';
 
-    return compact( 'time','parsed', 'extra_results' , 'legal' ,'regular_count', 'parsed_count');
+    return compact( 'time','parsed', 'extra_results' , 'legal' ,'regular', 'parsed');
 });
 
 Route::get('/landbank', function (){
