@@ -53,28 +53,28 @@ Route::get('/test', function (){
     $parsed = rtrim($parsed, ';');
 
 
-    $regular = DB::table('deeds')
+    $regular_results = DB::table('raw_source')
         ->select('combined_legal')
         ->where('combined_legal',  $legal->combined_legal)
         ->orderby('date_received')
         ->get();
 
 
-    $parsed =  DB::table('deeds')
+    $parsed_results =  DB::table('raw_source')
         ->select('combined_legal')
         ->where('combined_legal', 'like', $parsed.'%')
         ->get();
 
-    $extra_results = $parsed->count() - $regular->count();
+    $extra_results = $parsed_results->count() - $regular_results->count();
     $time_end = microtime(true);
     $time = round($time_end - $time_start, 2). ' sec';
 
-    return compact( 'time','parsed', 'extra_results' , 'legal' ,'regular', 'parsed');
+    return compact(  'explanation' ,'time','parsed', 'extra_results' , 'legal' ,'regular_results', 'parsed_results');
 });
 
 Route::get('/landbank', function (){
     // get only land bank deeds
-    $deeds =  DB::table('deeds')
+    $deeds =  DB::table('raw_source')
         ->select('combined_legal')
         ->where('grantee',  'like', 'LAND BANK%')
         ->groupby('combined_legal')
@@ -83,6 +83,79 @@ Route::get('/landbank', function (){
 
     return $deeds;
 });
+
+Route::get('/test2', function (){
+
+    $time_start = microtime(true);
+    // get all records of single property
+
+    $low = rand(1, 1000);
+    $legal = DB::table('landbank')
+        ->select('*')
+        ->inRandomOrder()
+        ->first();
+
+    if(empty($legal)){
+        dd('empty');
+    }
+
+    $city = '';
+    $subdivision = '';
+    $block = '';
+    $lot = '';
+    $frontage  = '';
+
+    preg_match('/CITY[^;]*/', $legal->combined_legal, $city);
+    preg_match('/BLK[^;]*/', $legal->combined_legal, $block);
+    preg_match('/SBD[^;]*/', $legal->combined_legal, $subdivision);
+    preg_match('/LT \d{1,5}[-]+\d+/', $legal->combined_legal, $lot);
+    preg_match("/[NEWS]{1,2} [0-9]*[.''\/]*[0-9]*['']/" ,$legal->combined_legal, $frontage);
+    $legal_extract = compact('city','block', 'subdivision', 'lot', 'frontage');
+
+    $points = 0;
+    foreach($legal_extract as $item){
+        if(!empty($item)){
+            $points++;
+        }
+    }
+    if($points < 2){
+        dd(compact('legal_extract', 'legal'));
+    }
+    //dd($legal_extract);
+
+    $parsed_results =  DB::table('raw_source')
+        ->select('id', 'combined_legal');
+
+
+//    if( !empty($city[0]) ){
+//        $parsed_results->where('combined_legal', 'like', '%'.$city[0].'%');
+//    }
+    if( !empty($subdivision[0]) ){
+        $parsed_results = $parsed_results->where('combined_legal', 'like', '%'.$subdivision[0].'%');
+
+    }
+    if( !empty($lot[0]) ){
+        $parsed_results = $parsed_results->where('combined_legal', 'like', '%'.$lot[0].'%');
+
+    }
+    if( !empty($frontage[0]) ){
+        $parsed_results = $parsed_results->where('combined_legal', 'like', '%'.$frontage[0].'%');
+
+    }
+    $parsed_results = $parsed_results->get();
+        //->where('combined_legal', 'like', '%'.$block[0].'%')
+
+
+
+
+    $time_end = microtime(true);
+    $time = round($time_end - $time_start, 2). ' sec';
+
+    return compact(  'time','legal', 'legal_extract' , 'parsed_results' );
+});
+
+Route::post('/csv', 'ParcelController@convertToCsv');
+
 
 
 

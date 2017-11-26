@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Deed;
 use App\Transfer;
 use Illuminate\Http\Request;
 Use DB;
+use League\Csv\Reader;
+use League\Csv\Statement;
+use League\Csv\Writer;
 
 class ParcelController extends Controller
 {
@@ -47,12 +51,41 @@ class ParcelController extends Controller
                 ->get();
         }*/
 
-       $parties = DB::table('deeds')
-            ->select('*')
-            ->where('grantee', 'like', $search.'%')
-           ->limit(500)
-            ->get();
-        return $parties;
+       $legals = DB::table('raw_source')
+        ->select('deeds.*')
+        ->leftJoin('landbank', 'deeds.combined_legal', 'landbank.combined_legal')
+        ->where('grantee', 'like', $search.'%')
+        ->limit(5000)
+        ->get();
+
+//       foreach($legals as $legal){
+//           $parties = DB::table('deeds')
+//               ->where('combined_legal', $legal)
+//               ->where('grantor', 'like', $search.'%' )
+//               ->get()->max('date_received');
+//           if($parties){
+//               return $parties;
+//           }
+//       }
+//       $parties = DB::table('deeds')
+//           ->whereIn('combined_legal', $legals)
+//           ->get();
+
+        return $legals;
+    }
+
+    protected function convertToCSV($request){
+
+        dd($request);
+        $csv = Writer::createFromFileObject(new \SplTempFileObject());
+
+        $csv->insertOne(\Schema::getColumnListing('deeds'));
+        $deeds = Deed::where('grantee', 'like', 'Land Bank%')
+            ->limit(500)->get();
+        $csv->insertAll($deeds->toArray());
+
+        $csv->output('deeds.csv');
+
     }
 
 }
