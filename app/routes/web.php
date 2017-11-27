@@ -84,33 +84,64 @@ Route::get('/landbank', function (){
     return $deeds;
 });
 
-Route::get('/test2', function (){
+Route::get('/test2/{type}', function ($type){
+
 
     $time_start = microtime(true);
     // get all records of single property
+    $type = !empty($type)? strtolower($type): '';
 
     $low = rand(1, 1000);
     $legal = DB::table('landbank')
-        ->select('*')
-        ->inRandomOrder()
-        ->first();
+        ->select('*');
+    if($type == 'section'){
+        $legal->whereNull('subdivision')
+        ->where('combined_legal', 'like', '%SEC%');
+    }elseif ($type == 'subdivision'){
+        $legal->whereNotNull('subdivision');
+    }
+    else{
+        $legal->whereNull('subdivision')
+            ->where('combined_legal', 'not like', '%SEC%');
+    }
+
+    $legal = $legal->inRandomOrder()->first();
 
     if(empty($legal)){
         dd('empty');
     }
 
+    // subdivisions
     $city = '';
     $subdivision = '';
     $block = '';
     $lot = '';
     $frontage  = '';
+    // sections
+    $town = '';
+    $section = '';
+    $range = '';
+    $qtr1 = '';
+    $qtr2 = '';
 
-    preg_match('/CITY[^;]*/', $legal->combined_legal, $city);
-    preg_match('/BLK[^;]*/', $legal->combined_legal, $block);
-    preg_match('/SBD[^;]*/', $legal->combined_legal, $subdivision);
-    preg_match('/LT \d{1,5}[-]+\d+/', $legal->combined_legal, $lot);
-    preg_match("/[NEWS]{1,2} [0-9]*[.''\/]*[0-9]*['']/" ,$legal->combined_legal, $frontage);
-    $legal_extract = compact('city','block', 'subdivision', 'lot', 'frontage');
+    $is_subdivision = preg_match('/SBD[^;]*/', $legal->combined_legal, $subdivision);
+    $is_section = preg_match('/SEC[^;]*/', $legal->combined_legal, $section);
+    if(!empty($subdivision)) {
+        preg_match('/CITY[^;]*/', $legal->combined_legal, $city);
+        preg_match('/BLK[^;]*/', $legal->combined_legal, $block);
+        preg_match('/LT \d+[-]?\d*/', $legal->combined_legal, $lot);
+        preg_match("/ [NEWS][EW]? [1-9][0-9]*[ \.''\/][0-9]*['']?/", $legal->combined_legal, $frontage);
+        $legal_extract = compact('city','block', 'subdivision', 'lot', 'frontage');
+    }
+    else if(!empty($section)){
+        preg_match('/TWN[^;]*/', $legal->combined_legal, $town);
+        preg_match('/RNG[^;]*/', $legal->combined_legal, $range);
+        preg_match('/Q1 [^;]*/', $legal->combined_legal, $qtr1);
+        preg_match('/Q2 [^;]*/', $legal->combined_legal, $qtr2);
+        preg_match("/[NEWS]?[EW]? ?[1-9][0-9]* ?[\.''\/]+[0-9]*['']? ?[NEWS]?[EW]?/", $legal->combined_legal, $frontage);
+        $legal_extract = compact('town','section', 'range', 'qtr1', 'qtr2', 'frontage');
+    }
+//    dd(compact('legal_extract', 'legal'));
 
     $points = 0;
     foreach($legal_extract as $item){
@@ -119,17 +150,16 @@ Route::get('/test2', function (){
         }
     }
     if($points < 2){
-        dd(compact('legal_extract', 'legal'));
+        $message  = "Less than 2 items identified";
+        dd(compact('legal_extract', 'legal', 'message'));
     }
-    //dd($legal_extract);
+
 
     $parsed_results =  DB::table('raw_source')
         ->select('id', 'combined_legal');
 
 
-//    if( !empty($city[0]) ){
-//        $parsed_results->where('combined_legal', 'like', '%'.$city[0].'%');
-//    }
+    /* Subdivision */
     if( !empty($subdivision[0]) ){
         $parsed_results = $parsed_results->where('combined_legal', 'like', '%'.$subdivision[0].'%');
 
@@ -142,6 +172,29 @@ Route::get('/test2', function (){
         $parsed_results = $parsed_results->where('combined_legal', 'like', '%'.$frontage[0].'%');
 
     }
+
+    /* Section */
+    if( !empty($section[0]) ){
+        $parsed_results = $parsed_results->where('combined_legal', 'like', '%'.$section[0].'%');
+
+    }
+    if( !empty($town[0]) ){
+        $parsed_results = $parsed_results->where('combined_legal', 'like', '%'.$town[0].'%');
+
+    }
+    if( !empty($range[0]) ){
+        $parsed_results = $parsed_results->where('combined_legal', 'like', '%'.$range[0].'%');
+
+    }
+    if( !empty($qtr1[0]) ){
+        $parsed_results = $parsed_results->where('combined_legal', 'like', '%'.$qtr1[0].'%');
+
+    }
+    if( !empty($qtr2[0]) ){
+        $parsed_results = $parsed_results->where('combined_legal', 'like', '%'.$qtr2[0].'%');
+
+    }
+
     $parsed_results = $parsed_results->get();
         //->where('combined_legal', 'like', '%'.$block[0].'%')
 
