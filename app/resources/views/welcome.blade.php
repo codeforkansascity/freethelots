@@ -144,13 +144,13 @@
             property_container.empty();
             data.forEach(function (row) {
                 console.log(row);
-                var legal = row['COMBINED_LEGAL'] ;
+                var legal = row['combined_legal'] ;
                 property_container.append('<div id="item-'+ row['id']+'" class="row"></div>');
 
                 var item = $('#item-'+ row['id']);
-                item.append('<div class="col-xs-3 ">'+ row['Grantee'] +'</div>');
-                item.append('<div class="col-xs-2 text-center ">'+ row['DATE_RECEIVED'] +'</div>');
-                item.append('<div class="col-xs-3 text-center ">'+ row['DOCUMENT_TYPE'] +'</div>');
+                item.append('<div class="col-xs-3 ">'+ row['grantee'] +'</div>');
+                item.append('<div class="col-xs-2 text-center ">'+ row['document_date'] +'</div>');
+                item.append('<div class="col-xs-3 text-center ">'+ row['document_type'] +'</div>');
                 item.append('<div class="col-xs-4 ">'+ legal +'</div>');
                 property_container.append('<div class="col-xs-12"><hr></div>');
 
