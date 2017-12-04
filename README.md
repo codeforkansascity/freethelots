@@ -1,13 +1,16 @@
 [![Stories in Ready](https://badge.waffle.io/codeforkansascity/freethelots.png?label=ready&title=Ready)](http://waffle.io/codeforkansascity/freethelots)
 
 # Free The Lots
-      This project would allow NLS to search the Jackson County Recorder of Deeds database to find all the Land Bank properties that a single claim holder—like Deutsche Bank—has claims against. 
-      Knowing this, would allow NLS to clear all Deutsche Bank claims against all Land Bank properties removed in a single case—rather than clearing titles for development one property at a time. 
+This project would allow NLS to search the Jackson County Recorder of Deeds database to find all the Land Bank properties that a single claim holder—like Deutsche Bank—has claims against. 
+
+Knowing this, would allow NLS to clear all Deutsche Bank claims against all Land Bank properties removed in a single case—rather than clearing titles for development one property at a time. 
 
 **Problem Statement**
-                Kansas City has a problem with vacant and abandoned properties.  It’s not that properties are undesirable—it’s that vacant properties often have old mortgages, liens or other claims against them that prevent them from being developed. 
+
+Kansas City has a problem with vacant and abandoned properties.  It’s not that properties are undesirable—it’s that vacant properties often have old mortgages, liens or other claims against them that prevent them from being developed. 
 The Land Bank of Kansas City has more than 2,000 vacant properties with legal claims against them.
-                Neighborhood Legal Support of Kansas City is a not-for-profit law firm that clears legal claims from Land Bank properties, so the properties can be rehabbed and turned into good quality housing for families. 
+
+Neighborhood Legal Support of Kansas City is a not-for-profit law firm that clears legal claims from Land Bank properties, so the properties can be rehabbed and turned into good quality housing for families. 
 Currently NLS handles litigation to clear title on Land Bank properties one house at a time.  Even if lien holder, like Deutsche Bank, has mortgages against 80 Land Bank properties there is currently no way to search the Recorder of Deeds database to determine the Land Bank properties that Deutsche Bank has mortgages against.
 
 **Project Champions**
