@@ -44,5 +44,19 @@ create aggregate unique_strings (varchar) (
 /* create temp table if not exists test_data (name) as ( */
 /*     values ('CADLE CO II INC'), ('CADLE COMPANY II INC'), ('COFFELT DAVID E'), ('SARGENT TRESSA A') */
 /* ); */
+/* drop table if exists test_data; */
+/* create temp table if not exists test_data_description (description) as ( */
+/*     values */ 
+/*     ('CITY KANSAS CITY; SBD BLENHEIM 01-3250 KC; LT 130-130;  E 50'' LT'), */
+/*     ('CITY KANSAS CITY; SBD BLENHEIM 01-3250 KC; LT 130-130;  E 50'' OF LT'), */
+/*     ('CITY KANSAS CITY; SBD BLENHEIM 01-3250 KC; LT 130-130;  THE E 1/2'), */
+/*     ('CITY KANSAS CITY; SBD BLENHEIM 01-3250 KC; LT 130-130;  THE E 1/2'), */
+/*     ('CITY KANSAS CITY; SBD BLENHEIM 01-3250 KC; LT 130-130;  W 50'''), */
+/*     ('CITY KANSAS CITY; SBD BLENHEIM 01-3250 KC; LT 130-130;  W 50'' LT 130'), */
+/* ); */
 
 /* select unique_strings(name) from (select name from test_data order by name) as name; */
+--with split as (
+--  select unnest(regexp_split_to_array(name, ';')) as name from test_data_description
+--)
+--select unnest(unique_strings(name)) from split;
