@@ -21,44 +21,42 @@ create table raw_source (
 \copy raw_source (instrument_number, book, page, date_received, document_date, document_type, grantee, grantor, combined_legal, page_file) from 'deeds.clean.csv' with (delimiter '|', encoding 'utf8', format csv, freeze true, header true, quote E'\b');
 commit;
 
+\timing on
 select 'Normalizing empty values';
+-- It's much more readable to split the parsing into two parts, though a bit slower.
 update raw_source
 set
-    combined_legal = coalesce(
-        nullif(nullif(nullif(nullif(nullif(nullif(nullif(nullif(nullif(nullif(nullif(
-        nullif(nullif(nullif(nullif(nullif(nullif(nullif(nullif(nullif(nullif(nullif(
-        nullif(nullif(nullif(nullif(nullif(nullif(nullif(nullif(nullif(nullif(nullif(
-        nullif(nullif(nullif(nullif(nullif(nullif(nullif(nullif(nullif(nullif(nullif(
-        nullif(nullif(nullif(nullif(nullif(nullif(nullif(nullif(nullif(nullif(nullif(
-        nullif(nullif(
-            regexp_replace(
-                trim(regexp_replace(combined_legal, '^\s*SUBDIVISION;', '')),
-                '\s+',
-                ' ',
-                'g'
-            ),
-            'VOID'), 'UNKNOWN'), 'UNKNOWN CODES'), 'SEE INSTR'), 'NOT GIVEN'), 'NONE GIVEN'), 'NO LEGAL'),
-            'NO LEGAL PAGE'), 'NO LEGAL LETTER'), 'NO LEGAL GIVEN'), 'NO LEGAL DESCR'), 'NO LEGAL ATTACHED'),
-            'NA'), 'N/A'), 'N'), 'LEGAL NOT DESIGNATED'), 'LEGAL MISSPELLED'), 'INCORRECT REFERENCE TO LEGAL'),
-            'INCORRECT REFERENCE TO LEGAL LETTER'), 'INCORRECT REF TO LEGAL'), 'INCORRECT REF TO LEGAL LETTER'),
-            'FREEFORM; NOT DESIGNATED'), 'FREEFORM; NONE'), 'FREEFORM; LEGAL NOT DESIGNATED'), 'FREEFORM'), '-'),
-            '*'), ''), ''''), '`'), '='), ','), ';'), '?'), '/'), '//'), '.'), '''N'), 'NAS'), 'NJONE'), 'NN'),
-            'NNN'), 'NNONE'), 'NOE'), 'NOEN'), 'NON'), 'NONR'), 'NOONE'), 'NS'), 'X'), 'N / A'),'NONEE'), 'NONEEE'),
-            'NO SUB'), 'NO DOC'), 'BNONE'), 'NONE'),
-        ''
-    ),
-    document_type = regexp_replace(coalesce(
-        nullif(trim(document_type), 'NONE'),
-        ''
-    ), '\s+', ' ', 'g'),
-    grantee = regexp_replace(coalesce(
-        nullif(nullif(nullif(nullif(nullif(nullif(trim(grantee), ''), 'VOID'), 'UNKNOWN'), 'NOT GIVEN'), 'NONE GIVEN'), 'NONE'),
-        ''
-    ), '\s+', ' ', 'g'),
-    grantor = regexp_replace(coalesce(
-        nullif(nullif(nullif(nullif(nullif(nullif(trim(grantee), ''), 'VOID'), 'UNKNOWN'), 'NOT GIVEN'), 'NONE GIVEN'), 'NONE'),
-        ''
-    ), '\s+', ' ', 'g')
+    combined_legal = trim(regexp_replace(regexp_replace(combined_legal, '^\s*SUBDIVISION;', ''), '\s+', ' ', 'g')),
+    document_type = trim(regexp_replace(document_type, '\s+', ' ', 'g')),
+    grantee = trim(regexp_replace(grantee, '\s+', ' ', 'g')),
+    grantor = trim(regexp_replace(grantor, '\s+', ' ', 'g'))
+;
+update raw_source
+set
+    combined_legal = case when combined_legal in (
+        '''', '''N', '*', ',', '-', '.', '/', '//', ';', '=', '?', 'BNONE',
+        'FREEFORM', 'FREEFORM; LEGAL NOT DESIGNATED', 'FREEFORM; NONE',
+        'FREEFORM; NOT DESIGNATED', 'INCORRECT REF TO LEGAL LETTER',
+        'INCORRECT REF TO LEGAL', 'INCORRECT REFERENCE TO LEGAL LETTER',
+        'INCORRECT REFERENCE TO LEGAL', 'LEGAL MISSPELLED',
+        'LEGAL NOT DESIGNATED', 'N / A', 'N', 'N/A', 'NA', 'NAS', 'NJONE',
+        'NN', 'NNN', 'NNONE', 'NO DOC', 'NO LEGAL ATTACHED', 'NO LEGAL DESCR',
+        'NO LEGAL GIVEN', 'NO LEGAL LETTER', 'NO LEGAL PAGE', 'NO LEGAL',
+        'NO SUB', 'NOE', 'NOEN', 'NON', 'NONE GIVEN', 'NONE', 'NONEE', 'NONEEE',
+        'NONR', 'NOONE', 'NOT GIVEN', 'NS', 'SEE INSTR', 'UNKNOWN CODES',
+        'UNKNOWN', 'VOID', 'VOIDED', 'X', '`'
+        ) then ''
+        else combined_legal
+    end,
+    document_type = case when document_type in ('NONE') then ''
+                    else document_type
+    end,
+    grantee = case when grantee in ('VOID', 'UNKNOWN', 'NOT GIVEN', 'NONE GIVEN', 'NONE') then ''
+              else grantee
+    end,
+    grantor = case when grantor in ('VOID', 'UNKNOWN', 'NOT GIVEN', 'NONE GIVEN', 'NONE') then ''
+              else grantor
+    end
 ;
 
 select 'Creating indexes';
