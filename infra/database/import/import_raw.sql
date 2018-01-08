@@ -26,38 +26,63 @@ select 'Normalizing empty values';
 -- It's much more readable to split the parsing into two parts, though a bit slower.
 update raw_source
 set
-    combined_legal = trim(regexp_replace(regexp_replace(combined_legal, '^\s*SUBDIVISION;', ''), '\s+', ' ', 'g')),
-    document_type = trim(regexp_replace(document_type, '\s+', ' ', 'g')),
-    grantee = trim(regexp_replace(grantee, '\s+', ' ', 'g')),
-    grantor = trim(regexp_replace(grantor, '\s+', ' ', 'g'))
+    combined_legal = coalesce(trim(regexp_replace(regexp_replace(combined_legal, '^\s*SUBDIVISION;', ''), '\s+', ' ', 'g')), ''),
+    document_type = coalesce(trim(regexp_replace(document_type, '\s+', ' ', 'g')), ''),
+    grantee = coalesce(trim(regexp_replace(grantee, '\s+', ' ', 'g')), ''),
+    grantor = coalesce(trim(regexp_replace(grantor, '\s+', ' ', 'g')), '')
 ;
+select 'Running vacuum analyze';
+vacuum analyze raw_source;
 update raw_source
 set
     combined_legal = case when combined_legal in (
-        '''', '''N', '*', ',', '-', '.', '/', '//', ';', '=', '?', 'BNONE',
-        'FREEFORM', 'FREEFORM; LEGAL NOT DESIGNATED', 'FREEFORM; NONE',
-        'FREEFORM; NOT DESIGNATED', 'INCORRECT REF TO LEGAL LETTER',
-        'INCORRECT REF TO LEGAL', 'INCORRECT REFERENCE TO LEGAL LETTER',
-        'INCORRECT REFERENCE TO LEGAL', 'LEGAL MISSPELLED',
-        'LEGAL NOT DESIGNATED', 'N / A', 'N', 'N/A', 'NA', 'NAS', 'NJONE',
-        'NN', 'NNN', 'NNONE', 'NO DOC', 'NO LEGAL ATTACHED', 'NO LEGAL DESCR',
-        'NO LEGAL GIVEN', 'NO LEGAL LETTER', 'NO LEGAL PAGE', 'NO LEGAL',
-        'NO SUB', 'NOE', 'NOEN', 'NON', 'NONE GIVEN', 'NONE', 'NONEE', 'NONEEE',
-        'NONR', 'NOONE', 'NOT GIVEN', 'NS', 'SEE INSTR', 'UNKNOWN CODES',
-        'UNKNOWN', 'VOID', 'VOIDED', 'X', '`'
+            '''', '''N', '*', ',', '-', '.', '/', '//', ';', '=', '?', 'BNONE',
+            'FREEFORM', 'FREEFORM; LEGAL NOT DESIGNATED', 'FREEFORM; NONE',
+            'FREEFORM; NOT DESIGNATED', 'INCORRECT REF TO LEGAL LETTER',
+            'INCORRECT REF TO LEGAL', 'INCORRECT REFERENCE TO LEGAL LETTER',
+            'INCORRECT REFERENCE TO LEGAL', 'LEGAL MISSPELLED',
+            'LEGAL NOT DESIGNATED', 'N / A', 'N', 'N/A', 'NA', 'NAS', 'NJONE',
+            'NN', 'NNN', 'NNONE', 'NO DOC', 'NO LEGAL ATTACHED', 'NO LEGAL DESCR',
+            'NO LEGAL GIVEN', 'NO LEGAL LETTER', 'NO LEGAL PAGE', 'NO LEGAL',
+            'NO SUB', 'NOE', 'NOEN', 'NON', 'NONE GIVEN', 'NONE', 'NONEE', 'NONEEE',
+            'NONR', 'NOONE', 'NOT GIVEN', 'NS', 'SEE INSTR', 'UNKNOWN CODES',
+            'UNKNOWN', 'VOID', 'VOIDED', 'X', '`'
         ) then ''
         else combined_legal
     end,
-    document_type = case when document_type in ('NONE') then ''
-                    else document_type
+    document_type = case when document_type in (
+            'NONE'
+        ) then ''
+        else document_type
     end,
-    grantee = case when grantee in ('VOID', 'UNKNOWN', 'NOT GIVEN', 'NONE GIVEN', 'NONE') then ''
-              else grantee
+    -- Make sure to update these where 'N/A' or 'NA' or 'NOT APPLICABLE'
+    grantee = case when grantee in (
+            'N/A',
+            'NA',
+            'NONE GIVEN',
+            'NONE',
+            'NOT APPLICABLE',
+            'NOT GIVEN',
+            'UNKNOWN',
+            'VOID'
+        ) then ''
+        else grantee
     end,
-    grantor = case when grantor in ('VOID', 'UNKNOWN', 'NOT GIVEN', 'NONE GIVEN', 'NONE') then ''
-              else grantor
+    grantor = case when grantor in (
+            'N/A',
+            'NA',
+            'NONE GIVEN',
+            'NONE',
+            'NOT APPLICABLE',
+            'NOT GIVEN',
+            'UNKNOWN',
+            'VOID'
+        ) then ''
+        else grantor
     end
 ;
+select 'Running vacuum analyze';
+vacuum analyze raw_source;
 
 select 'Creating indexes';
 create index raw_source_book_idx on raw_source using btree (book);
