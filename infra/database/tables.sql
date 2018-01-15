@@ -22,10 +22,6 @@ create table entity_dirty (
 
 create index on entity_dirty(lower(name) varchar_pattern_ops);
 
--- This table tracks entity names as they were recorded in the raw data. It is largely intended as a stop gap. Until the
--- name normalization logic is more refined, we'll rely on this to match/show exact names in the UI. Ideally, if the
--- name deduplication/normalization logic can be refined enough, this can be removed. The logic will try to turn things
--- like "Cable Co" and "Cable Company" into the same entity.
 create table parcel (
     id serial primary key,
     city varchar(50) not null,
@@ -74,27 +70,26 @@ values (1, 'grantor'), (2, 'grantee');
 create table transfer (
     id serial primary key,
     instrument_number varchar(13) not null unique,
+    date_received timestamp not null,
+    document_date timestamp not null,
+    document_type_id int not null references document_type not null,
+    files varchar(100)[]
+);
+
+-- Ideally, this table won't exist once we've normalized combined_legal addresses to match across an instrument_number
+create table transfer_parcel (
+    transfer_id int not null references transfer (id),
     -- TODO: This should be updated to point to "parcel" once/if we're more confident in the parsing.
-    parcel_id int not null references parcel_combined,
-    date_received timestamp not null
+    parcel_id int not null references parcel_combined (id)
 );
 
 create table transfer_party (
     transfer_id int not null references transfer (id),
-    -- TODO: This should be updated to point to "entity" once we've trust the normalization logic
+    -- TODO: This should be updated to point to "entity" once we trust the normalization logic
     entity_id int not null references entity_dirty (id),
     party_type_id int not null references party_type (id),
     -- I reckon the same party could be a grantor and grantee in case of multiple grantors granting to a subset
     unique (transfer_id, entity_id, party_type_id)
-);
-
--- Need this because there _may_ "valid" cases where the same instrument_number has multiple document types?
--- TODO: Confirm ^
-create table document (
-    transfer_id int not null unique references transfer (id),
-    type_id int not null references document_type not null,
-    date timestamp not null,
-    files varchar(100)[]
 );
 
 commit;
