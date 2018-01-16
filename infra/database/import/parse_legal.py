@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 # TODO: fillna with empty string before adding things instead of nulls
 
 from collections import defaultdict
@@ -28,7 +30,7 @@ combined_legal_df = pd.read_sql_query(
         ])
         # .where(raw_source.c.combined_legal.op('SIMILAR TO')('CITY [A-Z0-9 ]+; SBD%'))
         .order_by(raw_source.c.combined_legal)
-        # .limit(10000)
+        # .limit(50000)
     ),
     engine
 )
