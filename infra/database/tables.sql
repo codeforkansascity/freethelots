@@ -80,7 +80,8 @@ create table transfer (
 create table transfer_parcel (
     transfer_id int not null references transfer (id),
     -- TODO: This should be updated to point to "parcel" once/if we're more confident in the parsing.
-    parcel_id int not null references parcel_combined (id)
+    parcel_id int not null references parcel_combined (id),
+    unique (transfer_id, parcel_id)
 );
 
 create table transfer_party (
