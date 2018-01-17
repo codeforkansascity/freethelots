@@ -6,12 +6,11 @@ truncate transfer_parcel restart identity cascade;
 truncate transfer_party restart identity cascade;
 
 drop table if exists raw;
-create temp table raw as (
+create unlogged table raw as (
     select *
     from raw_source
     -- Blacklist some instrument_numbers.
-    where combined_legal != ''
-      and instrument_number not in (
+    where instrument_number not in (
         -- These instrument_numbers have multiple document types
         '1993I1209413',
         '1997I0019057',
@@ -51,8 +50,10 @@ create temp table raw as (
         '2002K0031612',
         '2002K0040273'
     )
+    /* and combined_legal != '' */
+    /* and combined_legal similar to 'CITY [A-Z0-9 ]+; SBD%' */
     order by combined_legal
-    limit 50000
+    /* limit 50000 */
 );
 
 insert into document_type (name)
@@ -131,3 +132,5 @@ insert into transfer_party (transfer_id, entity_id, party_type_id)
 select * from transfer_grantees
 union
 select * from transfer_grantors;
+
+drop table raw;
