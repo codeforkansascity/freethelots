@@ -1,4 +1,12 @@
-create temp table raw as (
+truncate document_type restart identity cascade;
+truncate entity restart identity cascade;
+truncate entity_dirty restart identity cascade;
+truncate transfer restart identity cascade;
+truncate transfer_parcel restart identity cascade;
+truncate transfer_party restart identity cascade;
+
+drop table if exists raw;
+create unlogged table raw as (
     select *
     from raw_source
     -- Blacklist some instrument_numbers.
@@ -42,18 +50,35 @@ create temp table raw as (
         '2002K0031612',
         '2002K0040273'
     )
+    /* and combined_legal != '' */
+    /* and combined_legal similar to 'CITY [A-Z0-9 ]+; SBD%' */
     order by combined_legal
-    limit 50000
+    /* limit 50000 */
 );
 
 insert into document_type (name)
 select distinct document_type from raw
 on conflict do nothing;
 
-insert into entity (name)
-select distinct grantor from raw
-union
-select distinct grantee from raw
+with all_entities as (
+    select distinct grantor as name from raw
+    union
+    select distinct grantee as name from raw
+), normalized_entities as (
+    -- TODO: Do name normalization. May be best to scope to/group by an instrument_number.
+    -- Ex: Cable Co == Cable Company.
+    select name as original_name, name as normalized_name from all_entities
+), entities as (
+    insert into entity (name)
+    select normalized_name from normalized_entities
+    on conflict do nothing
+    returning id, name
+)
+insert into entity_dirty (entity_id, name)
+select entities.id, normalized_entities.original_name
+from normalized_entities
+inner join entities
+  on entities.name = normalized_entities.normalized_name
 on conflict do nothing;
 
 insert into transfer (instrument_number, date_received, document_date, document_type_id, files)
@@ -72,8 +97,10 @@ on conflict
 do nothing;
 
 insert into transfer_parcel (transfer_id, parcel_id)
-select raw.id, parcel_combined.id
+select transfer.id, parcel_combined.id
 from raw
+inner join transfer
+    on transfer.instrument_number = raw.instrument_number
 inner join parcel_combined
     on parcel_combined.description = raw.combined_legal
 on conflict
@@ -82,24 +109,22 @@ do nothing;
 with raw_with_transfer as (
     -- Populating unique_strings can be done on the entity_dirty table instead to try to get common across _all_ things.
     -- Otherwise, we can try unique_strings here, but the _dirty table is nice for validating/improving unique_strings
-    select transfer.id as transfer_id, array_agg(distinct raw.grantee), array_agg(distinct raw.grantor)
+    select distinct transfer.id as transfer_id, raw.grantee, raw.grantor
     from raw
     inner join transfer
         on transfer.instrument_number = raw.instrument_number
-    group by transfer.id
 ), transfer_grantees as (
     select raw_with_transfer.transfer_id, grantees.id, party_type.id
     from raw_with_transfer
     inner join entity_dirty as grantees
-        on grantees.name = raw.grantee
+        on grantees.name = raw_with_transfer.grantee
     inner join party_type
       on party_type.name = 'grantee'
-)
 ), transfer_grantors as (
-    select raw_with_transfer.transfer_id, grantees.id, party_type.id
+    select raw_with_transfer.transfer_id, grantors.id, party_type.id
     from raw_with_transfer
     inner join entity_dirty as grantors
-        on grantors.name = raw.grantor 
+        on grantors.name = raw_with_transfer.grantor
     inner join party_type
       on party_type.name = 'grantor'
 )
@@ -108,7 +133,4 @@ select * from transfer_grantees
 union
 select * from transfer_grantors;
 
-# TODO: Populate transfer_parcel
-
-# TODO: Invert entity_dirty and entity dependency to match parcel_combined
-# TODO: Populate entity_dirty
+drop table raw;
