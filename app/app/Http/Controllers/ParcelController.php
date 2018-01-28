@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Deed;
+use App\Entity;
 use App\Transfer;
 use Illuminate\Http\Request;
 Use DB;
@@ -21,21 +22,18 @@ class ParcelController extends Controller
     }
     protected function searchGrantor($search){
 
-        if(empty($search)){
-            return false;
-        }
-        $search = str_replace(',', '' , $search);
         $search = strtoupper($search);
 
-        /* Uses wildcards searches for partial match */
-        $parties = DB::table('raw_source')
-            ->select('grantee', 'document_date', 'document_type', 'raw_source.combined_legal')
-            ->join('landbank', 'raw_source.combined_legal', 'landbank.combined_legal')
-            ->Where('grantee', 'like', $search.'%' )
-            ->limit(1000)->get();
+        $entity = Entity::where('name', 'like', $search.'%')->first();
+
+        return $entity->parcels();
 
 
-        return $parties;
+    }
+    protected function searchByEntity(Entity $entity){
+
+        return $entity->parcels();
+
     }
 
     protected function convertToCSV($request){

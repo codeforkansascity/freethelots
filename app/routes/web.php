@@ -25,6 +25,9 @@ Route::get('/parties/search/{search}', 'PartyController@search');
 Route::get('/parcels', 'ParcelController@index');
 Route::get('/parcels/search/{search}', 'ParcelController@searchGrantor');
 
+Route::get('/entity/{entity}/parcels', 'ParcelController@searchByEntity');
+Route::get('/entity/search/{name}', 'EntityController@searchByName');
+
 Route::get('/test', function (){
 
     $time_start = microtime(true);
