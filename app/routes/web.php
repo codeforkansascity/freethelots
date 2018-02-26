@@ -72,6 +72,12 @@ Route::get('/test', function (){
     $time_end = microtime(true);
     $time = round($time_end - $time_start, 2). ' sec';
 
+
+//    $pc = \App\ParcelCombined::inRandomOrder()->first();
+//    $mortgages = $pc->mortgages();
+//    $transfers = $pc->transfers()->get();
+//    return compact('pc', 'mortgages', 'transfers');
+
     return compact(  'explanation' ,'time','parsed', 'extra_results' , 'legal' ,'regular_results', 'parsed_results');
 });
 
@@ -159,7 +165,7 @@ Route::get('/test2/{type}', function ($type){
 
 
     $parsed_results =  DB::table('raw_source')
-        ->select('id', 'combined_legal');
+        ->select('*');
 
 
     /* Subdivision */
@@ -211,6 +217,38 @@ Route::get('/test2/{type}', function ($type){
 });
 
 Route::post('/csv', 'ParcelController@convertToCsv');
+
+Route::get('/transfers/{id}', function($id){
+    $parcel = \App\Parcel::find($id);
+
+    $transfers = $parcel->transfers()->get();
+    $count = count($transfers);
+
+    return compact('count', 'transfers');
+});
+
+Route::get('/mortgages/{id}', function($id){
+    $parcel = \App\Parcel::find($id);
+
+    $mortgages = $parcel->mortgages();
+    $count = count($mortgages);
+    return compact('count','mortgages');
+});
+
+
+Route::get('/random/', function(){
+    
+    $parcel = \App\Parcel::inRandomOrder()->first();
+
+    $transfers = $parcel->transfers()->get();
+    $tcount = count($transfers);
+
+    $mortgages = $parcel->mortgages();
+    $mcount = count($mortgages);
+
+    return compact('parcel', 'tcount', 'transfers','mcount','mortgages');
+});
+
 
 
 

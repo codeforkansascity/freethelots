@@ -26,7 +26,8 @@ class ParcelController extends Controller
 
         $entity = Entity::where('name', 'like', $search.'%')->first();
 
-        return $entity->parcels();
+
+        return $entity->parcels()->get();
 
 
     }
