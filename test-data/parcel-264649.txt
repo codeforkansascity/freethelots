@@ -1,0 +1,26 @@
+
+Parcel 
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+{"id":264649,"city":"KANSAS CITY","subdivision":"WOODLAND PARK 09-3028 KC","block":"6","lot":"20-23","frontage":null}
+
+
+Parcel Transfers 
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+{"type":"grantee","name":"VAN DEE LARRY D","entity_id":337493,"description":"CITY KANSAS CITY; SBD WOODLAND PARK 09-3028 KC; BLK 6; LT 20-23","doc_type":"REL","date":"2006-09-26 00:00:00","t_id":1197720}
+
+{"type":"grantor","name":"BANK MIDWEST NA","entity_id":559248,"description":"CITY KANSAS CITY; SBD WOODLAND PARK 09-3028 KC; BLK 6; LT 20-23","doc_type":"REL","date":"2006-09-26 00:00:00","t_id":1197720}
+
+{"type":"grantor","name":"VANDEE LARRY D","entity_id":53710,"description":"CITY KANSAS CITY; SBD WOODLAND PARK 09-3028 KC; BLK 6; LT 20-23","doc_type":"WD","date":"2013-09-13 00:00:00","t_id":1947282}
+
+{"type":"grantee","name":"THE LARRY D VANDEE AND KATHLEEN A VANDEE REVOCABLE TRUST","entity_id":151184,"description":"CITY KANSAS CITY; SBD WOODLAND PARK 09-3028 KC; BLK 6; LT 20-23","doc_type":"WD","date":"2013-09-13 00:00:00","t_id":1947282}
+
+{"type":"grantor","name":"VANDEE LARRY D","entity_id":53710,"description":"CITY KANSAS CITY; SBD WOODLAND PARK 09-3028 KC; BLK 6; LT 20-23; COM AT SW COR OF LT 23 SEE INSTR","doc_type":"EASE","date":"2006-05-30 00:00:00","t_id":1176049}
+
+{"type":"grantee","name":"KANSAS CITY","entity_id":56552,"description":"CITY KANSAS CITY; SBD WOODLAND PARK 09-3028 KC; BLK 6; LT 20-23; COM AT SW COR OF LT 23 SEE INSTR","doc_type":"EASE","date":"2006-05-30 00:00:00","t_id":1176049}
+
+
+Active Mortgages 
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+

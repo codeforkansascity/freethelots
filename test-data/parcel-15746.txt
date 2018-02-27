@@ -1,0 +1,26 @@
+
+Parcel 
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+{"id":15746,"city":"BLUE SPRINGS","subdivision":"PLAZA ESTATES WEST LOT 379-386 I33\/94 BL","block":null,"lot":"383-384","frontage":"S 8'"}
+
+
+Parcel Transfers 
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+{"type":"grantee","name":"BOZARTH TERRY D","entity_id":58384,"description":"CITY BLUE SPRINGS; SBD PLAZA ESTATES WEST LOT 379-386 I33\/94 BL; LT 383-384; LT 384 EXC S 8' & S 3' OF LT 383","doc_type":"REL","date":"2011-07-14 00:00:00","t_id":1737580}
+
+{"type":"grantor","name":"JPMORGAN CHASE BANK NA","entity_id":647482,"description":"CITY BLUE SPRINGS; SBD PLAZA ESTATES WEST LOT 379-386 I33\/94 BL; LT 383-384; LT 384 EXC S 8' & S 3' OF LT 383","doc_type":"REL","date":"2011-07-14 00:00:00","t_id":1737580}
+
+{"type":"grantor","name":"BEASLEY P S","entity_id":149088,"description":"CITY BLUE SPRINGS; SBD PLAZA ESTATES WEST LOT 379-386 I33\/94 BL; LT 383-384; LT 384 EX S 8' AND S 3' LT 383","doc_type":"WD","date":"1978-01-27 00:00:00","t_id":85950}
+
+{"type":"grantee","name":"OLLER ELDON L","entity_id":604803,"description":"CITY BLUE SPRINGS; SBD PLAZA ESTATES WEST LOT 379-386 I33\/94 BL; LT 383-384; LT 384 EX S 8' AND S 3' LT 383","doc_type":"WD","date":"1978-01-27 00:00:00","t_id":85950}
+
+{"type":"grantor","name":"BOZARTH TERRY D","entity_id":58384,"description":"CITY BLUE SPRINGS; SBD PLAZA ESTATES WEST LOT 379-386 I33\/94 BL; LT 383-384; LT 384 EXC S 8' & S 3' LT 383","doc_type":"QCD","date":"2010-04-21 00:00:00","t_id":1629970}
+
+{"type":"grantee","name":"TERRY D BOZARTH REVOCABLE TRUST","entity_id":210756,"description":"CITY BLUE SPRINGS; SBD PLAZA ESTATES WEST LOT 379-386 I33\/94 BL; LT 383-384; LT 384 EXC S 8' & S 3' LT 383","doc_type":"QCD","date":"2010-04-21 00:00:00","t_id":1629970}
+
+
+Active Mortgages 
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+

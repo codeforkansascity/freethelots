@@ -1,0 +1,102 @@
+
+Parcel 
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+{"id":29789,"city":"GRAIN VALLEY","subdivision":"ROSEWOOD HILLS 1ST PLAT I70\/53 GV","block":null,"lot":"30-30","frontage":null}
+
+
+Parcel Transfers 
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+{"type":"grantee","name":"BANK 10","entity_id":77461,"description":"CITY GRAIN VALLEY; SBD ROSEWOOD HILLS 1ST PLAT I70\/53 GV; LT 30-30","doc_type":"DT","date":"2003-03-21 00:00:00","t_id":604088}
+
+{"type":"grantor","name":"BEAL KENNETH A","entity_id":390804,"description":"CITY GRAIN VALLEY; SBD ROSEWOOD HILLS 1ST PLAT I70\/53 GV; LT 30-30","doc_type":"DT","date":"2003-03-21 00:00:00","t_id":604088}
+
+{"type":"grantor","name":"BANK 10","entity_id":77461,"description":"CITY GRAIN VALLEY; SBD ROSEWOOD HILLS 1ST PLAT I70\/53 GV; LT 30-30","doc_type":"REL","date":"2003-04-25 00:00:00","t_id":610618}
+
+{"type":"grantee","name":"BEAL KENNETH A","entity_id":390804,"description":"CITY GRAIN VALLEY; SBD ROSEWOOD HILLS 1ST PLAT I70\/53 GV; LT 30-30","doc_type":"REL","date":"2003-04-25 00:00:00","t_id":610618}
+
+{"type":"grantor","name":"BEAL KENNETH A","entity_id":390804,"description":"CITY GRAIN VALLEY; SBD ROSEWOOD HILLS 1ST PLAT I70\/53 GV; LT 30-30","doc_type":"WD","date":"2003-12-04 00:00:00","t_id":693278}
+
+{"type":"grantee","name":"POOCH SCOTT W","entity_id":747775,"description":"CITY GRAIN VALLEY; SBD ROSEWOOD HILLS 1ST PLAT I70\/53 GV; LT 30-30","doc_type":"WD","date":"2003-12-04 00:00:00","t_id":693278}
+
+{"type":"grantor","name":"POOCH ANNE A","entity_id":57022,"description":"CITY GRAIN VALLEY; SBD ROSEWOOD HILLS 1ST PLAT I70\/53 GV; LT 30-30","doc_type":"DT","date":"2003-12-05 00:00:00","t_id":693279}
+
+{"type":"grantee","name":"HUNTINGTON NATIONAL BANK","entity_id":269303,"description":"CITY GRAIN VALLEY; SBD ROSEWOOD HILLS 1ST PLAT I70\/53 GV; LT 30-30","doc_type":"DT","date":"2003-12-05 00:00:00","t_id":693279}
+
+{"type":"grantor","name":"BANK 10","entity_id":77461,"description":"CITY GRAIN VALLEY; SBD ROSEWOOD HILLS 1ST PLAT I70\/53 GV; LT 30-30","doc_type":"REL","date":"2003-12-29 00:00:00","t_id":779164}
+
+{"type":"grantee","name":"BEAL KENNETH A","entity_id":390804,"description":"CITY GRAIN VALLEY; SBD ROSEWOOD HILLS 1ST PLAT I70\/53 GV; LT 30-30","doc_type":"REL","date":"2003-12-29 00:00:00","t_id":779164}
+
+{"type":"grantee","name":"MORTGAGE ELECTRONIC REGISTRATION SYSTEMS INC","entity_id":636661,"description":"CITY GRAIN VALLEY; SBD ROSEWOOD HILLS 1ST PLAT I70\/53 GV; LT 30-30","doc_type":"REL","date":"2005-10-06 00:00:00","t_id":1029677}
+
+{"type":"grantor","name":"POOCH SCOTT W","entity_id":747775,"description":"CITY GRAIN VALLEY; SBD ROSEWOOD HILLS 1ST PLAT I70\/53 GV; LT 30-30","doc_type":"REL","date":"2005-10-06 00:00:00","t_id":1029677}
+
+{"type":"grantee","name":"BANK OF AMERICA NA","entity_id":202413,"description":"CITY GRAIN VALLEY; SBD ROSEWOOD HILLS 1ST PLAT I70\/53 GV; LT 30-30","doc_type":"DT","date":"2006-01-13 00:00:00","t_id":1238442}
+
+{"type":"grantor","name":"ARROCHA SIMEON O","entity_id":630607,"description":"CITY GRAIN VALLEY; SBD ROSEWOOD HILLS 1ST PLAT I70\/53 GV; LT 30-30","doc_type":"DT","date":"2006-01-13 00:00:00","t_id":1238442}
+
+{"type":"grantee","name":"BANK OF AMERICA NA","entity_id":202413,"description":"CITY GRAIN VALLEY; SBD ROSEWOOD HILLS 1ST PLAT I70\/53 GV; LT 30-30","doc_type":"DT","date":"2006-03-02 00:00:00","t_id":1249517}
+
+{"type":"grantor","name":"ARROCHA SIMEON O","entity_id":630607,"description":"CITY GRAIN VALLEY; SBD ROSEWOOD HILLS 1ST PLAT I70\/53 GV; LT 30-30","doc_type":"DT","date":"2006-03-02 00:00:00","t_id":1249517}
+
+{"type":"grantee","name":"APROCHA SIMEON O","entity_id":193032,"description":"CITY GRAIN VALLEY; SBD ROSEWOOD HILLS 1ST PLAT I70\/53 GV; LT 30-30","doc_type":"REL","date":"2008-05-08 00:00:00","t_id":1439534}
+
+{"type":"grantor","name":"BANK OF AMERICA NA","entity_id":202413,"description":"CITY GRAIN VALLEY; SBD ROSEWOOD HILLS 1ST PLAT I70\/53 GV; LT 30-30","doc_type":"REL","date":"2008-05-08 00:00:00","t_id":1439534}
+
+{"type":"grantee","name":"STATE FARM BANK FSB","entity_id":230298,"description":"CITY GRAIN VALLEY; SBD ROSEWOOD HILLS 1ST PLAT I70\/53 GV; LT 30-30","doc_type":"DT","date":"2008-04-28 00:00:00","t_id":1440382}
+
+{"type":"grantor","name":"ARROCHA SIMEON O","entity_id":630607,"description":"CITY GRAIN VALLEY; SBD ROSEWOOD HILLS 1ST PLAT I70\/53 GV; LT 30-30","doc_type":"DT","date":"2008-04-28 00:00:00","t_id":1440382}
+
+{"type":"grantee","name":"STATE FARM BANK FSB","entity_id":230298,"description":"CITY GRAIN VALLEY; SBD ROSEWOOD HILLS 1ST PLAT I70\/53 GV; LT 30-30","doc_type":"DT","date":"2008-06-04 00:00:00","t_id":1453528}
+
+{"type":"grantor","name":"ARROCHA SIMEON O","entity_id":630607,"description":"CITY GRAIN VALLEY; SBD ROSEWOOD HILLS 1ST PLAT I70\/53 GV; LT 30-30","doc_type":"DT","date":"2008-06-04 00:00:00","t_id":1453528}
+
+{"type":"grantee","name":"SUNTRUST MORTGAGE","entity_id":77607,"description":"CITY GRAIN VALLEY; SBD ROSEWOOD HILLS 1ST PLAT I70\/53 GV; LT 30-30","doc_type":"DT","date":"2009-02-25 00:00:00","t_id":1518572}
+
+{"type":"grantor","name":"ARROCHA SIMEON O","entity_id":630607,"description":"CITY GRAIN VALLEY; SBD ROSEWOOD HILLS 1ST PLAT I70\/53 GV; LT 30-30","doc_type":"DT","date":"2009-02-25 00:00:00","t_id":1518572}
+
+{"type":"grantor","name":"STATE FARM BANK FSB","entity_id":230298,"description":"CITY GRAIN VALLEY; SBD ROSEWOOD HILLS 1ST PLAT I70\/53 GV; LT 30-30","doc_type":"REL","date":"2009-03-17 00:00:00","t_id":1522385}
+
+{"type":"grantee","name":"ARROCHA SIMEON O","entity_id":630607,"description":"CITY GRAIN VALLEY; SBD ROSEWOOD HILLS 1ST PLAT I70\/53 GV; LT 30-30","doc_type":"REL","date":"2009-03-17 00:00:00","t_id":1522385}
+
+{"type":"grantor","name":"STATE FARM BANK FSB","entity_id":230298,"description":"CITY GRAIN VALLEY; SBD ROSEWOOD HILLS 1ST PLAT I70\/53 GV; LT 30-30","doc_type":"REL","date":"2009-03-18 00:00:00","t_id":1523022}
+
+{"type":"grantee","name":"ARROCHA SIMEON O","entity_id":630607,"description":"CITY GRAIN VALLEY; SBD ROSEWOOD HILLS 1ST PLAT I70\/53 GV; LT 30-30","doc_type":"REL","date":"2009-03-18 00:00:00","t_id":1523022}
+
+{"type":"grantor","name":"BANK OF AMERICA NA","entity_id":202413,"description":"CITY GRAIN VALLEY; SBD ROSEWOOD HILLS 1ST PLAT I70\/53 GV; LT 30-30","doc_type":"REL","date":"2009-04-02 00:00:00","t_id":1527904}
+
+{"type":"grantee","name":"ARROCHA SIMEON O","entity_id":630607,"description":"CITY GRAIN VALLEY; SBD ROSEWOOD HILLS 1ST PLAT I70\/53 GV; LT 30-30","doc_type":"REL","date":"2009-04-02 00:00:00","t_id":1527904}
+
+{"type":"grantee","name":"COMMERCE BANK","entity_id":355466,"description":"CITY GRAIN VALLEY; SBD ROSEWOOD HILLS 1ST PLAT I70\/53 GV; LT 30-30","doc_type":"DT","date":"2013-06-13 00:00:00","t_id":1928146}
+
+{"type":"grantor","name":"ARROCHA SIMEON O","entity_id":630607,"description":"CITY GRAIN VALLEY; SBD ROSEWOOD HILLS 1ST PLAT I70\/53 GV; LT 30-30","doc_type":"DT","date":"2013-06-13 00:00:00","t_id":1928146}
+
+{"type":"grantee","name":"COMMERCE BANK","entity_id":355466,"description":"CITY GRAIN VALLEY; SBD ROSEWOOD HILLS 1ST PLAT I70\/53 GV; LT 30-30","doc_type":"REQT","date":"2013-06-13 00:00:00","t_id":1928147}
+
+{"type":"grantor","name":"ARROCHA SIMEON O","entity_id":630607,"description":"CITY GRAIN VALLEY; SBD ROSEWOOD HILLS 1ST PLAT I70\/53 GV; LT 30-30","doc_type":"REQT","date":"2013-06-13 00:00:00","t_id":1928147}
+
+{"type":"grantee","name":"COMMERCE BANK","entity_id":355466,"description":"CITY GRAIN VALLEY; SBD ROSEWOOD HILLS 1ST PLAT I70\/53 GV; LT 30-30","doc_type":"DT","date":"2015-06-08 00:00:00","t_id":2099473}
+
+{"type":"grantor","name":"ARROCHA SIMEON O","entity_id":630607,"description":"CITY GRAIN VALLEY; SBD ROSEWOOD HILLS 1ST PLAT I70\/53 GV; LT 30-30","doc_type":"DT","date":"2015-06-08 00:00:00","t_id":2099473}
+
+{"type":"grantee","name":"COMMERCE BANK","entity_id":355466,"description":"CITY GRAIN VALLEY; SBD ROSEWOOD HILLS 1ST PLAT I70\/53 GV; LT 30-30","doc_type":"REQT","date":"2015-06-08 00:00:00","t_id":2099474}
+
+{"type":"grantor","name":"ARROCHA SIMEON O","entity_id":630607,"description":"CITY GRAIN VALLEY; SBD ROSEWOOD HILLS 1ST PLAT I70\/53 GV; LT 30-30","doc_type":"REQT","date":"2015-06-08 00:00:00","t_id":2099474}
+
+{"type":"grantor","name":"COMMERCE BANK","entity_id":355466,"description":"CITY GRAIN VALLEY; SBD ROSEWOOD HILLS 1ST PLAT I70\/53 GV; LT 30-30","doc_type":"REL","date":"2015-06-05 00:00:00","t_id":2099475}
+
+{"type":"grantee","name":"ARROCHA SIMEON O","entity_id":630607,"description":"CITY GRAIN VALLEY; SBD ROSEWOOD HILLS 1ST PLAT I70\/53 GV; LT 30-30","doc_type":"REL","date":"2015-06-05 00:00:00","t_id":2099475}
+
+{"type":"grantee","name":"ARROCHA SIMEON O","entity_id":630607,"description":"CITY GRAIN VALLEY; SBD ROSEWOOD HILLS 1ST PLAT I70\/53 GV; LT 30-30","doc_type":"REL","date":"2016-03-21 00:00:00","t_id":2154603}
+
+{"type":"grantor","name":"MORTGAGE ELECTRONIC REGISTRATION SYSTEMS INC","entity_id":636661,"description":"CITY GRAIN VALLEY; SBD ROSEWOOD HILLS 1ST PLAT I70\/53 GV; LT 30-30","doc_type":"REL","date":"2016-03-21 00:00:00","t_id":2154603}
+
+
+Active Mortgages 
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+{"type":"grantee","name":"HUNTINGTON NATIONAL BANK","entity_id":269303,"description":"CITY GRAIN VALLEY; SBD ROSEWOOD HILLS 1ST PLAT I70\/53 GV; LT 30-30","doc_type":"DT","date":"2003-12-05 00:00:00","t_id":693279}
+
+{"type":"grantee","name":"SUNTRUST MORTGAGE","entity_id":77607,"description":"CITY GRAIN VALLEY; SBD ROSEWOOD HILLS 1ST PLAT I70\/53 GV; LT 30-30","doc_type":"DT","date":"2009-02-25 00:00:00","t_id":1518572}
+

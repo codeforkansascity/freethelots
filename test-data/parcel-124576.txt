@@ -1,0 +1,66 @@
+
+Parcel 
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+{"id":124576,"city":"KANSAS CITY","subdivision":"BROADLAND 01-4660 KC","block":null,"lot":"330-330","frontage":null}
+
+
+Parcel Transfers 
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+{"type":"grantor","name":"HINES LAURIE J","entity_id":56514,"description":"CITY KANSAS CITY; SBD BROADLAND 01-4660 KC; LT 330-330","doc_type":"DT","date":"2003-05-12 00:00:00","t_id":730077}
+
+{"type":"grantee","name":"BANK MIDWEST NA","entity_id":559248,"description":"CITY KANSAS CITY; SBD BROADLAND 01-4660 KC; LT 330-330","doc_type":"DT","date":"2003-05-12 00:00:00","t_id":730077}
+
+{"type":"grantor","name":"BANK MIDWEST NA","entity_id":559248,"description":"CITY KANSAS CITY; SBD BROADLAND 01-4660 KC; LT 330-330","doc_type":"AGRE","date":"2003-04-23 00:00:00","t_id":730078}
+
+{"type":"grantee","name":"BANK MIDWEST NA","entity_id":559248,"description":"CITY KANSAS CITY; SBD BROADLAND 01-4660 KC; LT 330-330","doc_type":"AGRE","date":"2003-04-23 00:00:00","t_id":730078}
+
+{"type":"grantor","name":"BANK MIDWEST NA","entity_id":559248,"description":"CITY KANSAS CITY; SBD BROADLAND 01-4660 KC; LT 330-330","doc_type":"ASDT","date":"2003-06-04 00:00:00","t_id":736301}
+
+{"type":"grantee","name":"WASHINGTON MUTUAL BANK FA","entity_id":604203,"description":"CITY KANSAS CITY; SBD BROADLAND 01-4660 KC; LT 330-330","doc_type":"ASDT","date":"2003-06-04 00:00:00","t_id":736301}
+
+{"type":"grantee","name":"HINES LAURIE J","entity_id":56514,"description":"CITY KANSAS CITY; SBD BROADLAND 01-4660 KC; LT 330-330","doc_type":"REL","date":"2003-08-22 00:00:00","t_id":755720}
+
+{"type":"grantor","name":"JAMES B NUTTER & COMPANY","entity_id":261653,"description":"CITY KANSAS CITY; SBD BROADLAND 01-4660 KC; LT 330-330","doc_type":"REL","date":"2003-08-22 00:00:00","t_id":755720}
+
+{"type":"grantor","name":"WASHINGTON MUTUAL BANK","entity_id":295376,"description":"CITY KANSAS CITY; SBD BROADLAND 01-4660 KC; LT 330-330","doc_type":"ASDT","date":"2007-03-23 00:00:00","t_id":1301516}
+
+{"type":"grantee","name":"WELLS FARGO BANK NA","entity_id":581065,"description":"CITY KANSAS CITY; SBD BROADLAND 01-4660 KC; LT 330-330","doc_type":"ASDT","date":"2007-03-23 00:00:00","t_id":1301516}
+
+{"type":"grantor","name":"HINES LAURIE J","entity_id":56514,"description":"CITY KANSAS CITY; SBD BROADLAND 01-4660 KC; LT 330-330","doc_type":"DT","date":"2007-05-05 00:00:00","t_id":1320808}
+
+{"type":"grantee","name":"UMB BANK NA","entity_id":216810,"description":"CITY KANSAS CITY; SBD BROADLAND 01-4660 KC; LT 330-330","doc_type":"DT","date":"2007-05-05 00:00:00","t_id":1320808}
+
+{"type":"grantee","name":"HINES LAURIE J","entity_id":56514,"description":"CITY KANSAS CITY; SBD BROADLAND 01-4660 KC; LT 330-330","doc_type":"REL","date":"2007-05-31 00:00:00","t_id":1328091}
+
+{"type":"grantor","name":"BANK MIDWEST","entity_id":597929,"description":"CITY KANSAS CITY; SBD BROADLAND 01-4660 KC; LT 330-330","doc_type":"REL","date":"2007-05-31 00:00:00","t_id":1328091}
+
+{"type":"grantee","name":"HINES LAURIE J","entity_id":56514,"description":"CITY KANSAS CITY; SBD BROADLAND 01-4660 KC; LT 330-330","doc_type":"REL","date":"2017-05-08 00:00:00","t_id":2260218}
+
+{"type":"grantor","name":"UMB BANK","entity_id":448133,"description":"CITY KANSAS CITY; SBD BROADLAND 01-4660 KC; LT 330-330","doc_type":"REL","date":"2017-05-08 00:00:00","t_id":2260218}
+
+{"type":"grantee","name":"HINES LAURIE J","entity_id":56514,"description":"CITY KANSAS CITY; SBD BROADLAND 01-4660 KC; LT 330-330","doc_type":"REL","date":"2017-06-16 00:00:00","t_id":2270573}
+
+{"type":"grantor","name":"WELLS FARGO BANK","entity_id":645968,"description":"CITY KANSAS CITY; SBD BROADLAND 01-4660 KC; LT 330-330","doc_type":"REL","date":"2017-06-16 00:00:00","t_id":2270573}
+
+{"type":"grantor","name":"HINES LAURIE J","entity_id":56514,"description":"CITY KANSAS CITY; SBD BROADLAND 01-4660 KC; LT 330-330","doc_type":"WD","date":"2017-06-19 00:00:00","t_id":2285153}
+
+{"type":"grantee","name":"RICE KENNETH R","entity_id":482741,"description":"CITY KANSAS CITY; SBD BROADLAND 01-4660 KC; LT 330-330","doc_type":"WD","date":"2017-06-19 00:00:00","t_id":2285153}
+
+{"type":"grantor","name":"RICE KENNETH R","entity_id":482741,"description":"CITY KANSAS CITY; SBD BROADLAND 01-4660 KC; LT 330-330","doc_type":"DT","date":"2017-06-19 00:00:00","t_id":2285154}
+
+{"type":"grantee","name":"LAMAR BANK & TRUST COMPANY","entity_id":770483,"description":"CITY KANSAS CITY; SBD BROADLAND 01-4660 KC; LT 330-330","doc_type":"DT","date":"2017-06-19 00:00:00","t_id":2285154}
+
+{"type":"grantor","name":"HINES LAURIE J","entity_id":56514,"description":"CITY KANSAS CITY; SBD BROADLAND 01-4660 KC; LT 330","doc_type":"DT","date":"2002-07-19 00:00:00","t_id":535003}
+
+{"type":"grantee","name":"BANK MIDWEST NA","entity_id":559248,"description":"CITY KANSAS CITY; SBD BROADLAND 01-4660 KC; LT 330","doc_type":"DT","date":"2002-07-19 00:00:00","t_id":535003}
+
+
+Active Mortgages 
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+{"type":"grantee","name":"UMB BANK NA","entity_id":216810,"description":"CITY KANSAS CITY; SBD BROADLAND 01-4660 KC; LT 330-330","doc_type":"DT","date":"2007-05-05 00:00:00","t_id":1320808}
+
+{"type":"grantee","name":"LAMAR BANK & TRUST COMPANY","entity_id":770483,"description":"CITY KANSAS CITY; SBD BROADLAND 01-4660 KC; LT 330-330","doc_type":"DT","date":"2017-06-19 00:00:00","t_id":2285154}
+

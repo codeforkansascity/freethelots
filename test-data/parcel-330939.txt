@@ -1,0 +1,74 @@
+
+Parcel 
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+{"id":330939,"city":"RAYTOWN","subdivision":"SOUTH BROOKE ESTATES 08-0787 RA","block":null,"lot":"39-40","frontage":"S 60'"}
+
+
+Parcel Transfers 
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+{"type":"grantor","name":"UMB BANK NA","entity_id":216810,"description":"CITY RAYTOWN; SBD SOUTH BROOKE ESTATES 08-0787 RA; LT 39-40; S 60' LT 40 & N 10' LT 39","doc_type":"SUB","date":"2005-10-31 00:00:00","t_id":1040672}
+
+{"type":"grantee","name":"CITIFINANCIAL MORTGAGE COMPANY INC","entity_id":245709,"description":"CITY RAYTOWN; SBD SOUTH BROOKE ESTATES 08-0787 RA; LT 39-40; S 60' LT 40 & N 10' LT 39","doc_type":"SUB","date":"2005-10-31 00:00:00","t_id":1040672}
+
+{"type":"grantee","name":"CITIFINANCIAL MORTGAGE COMPANY INC","entity_id":245709,"description":"CITY RAYTOWN; SBD SOUTH BROOKE ESTATES 08-0787 RA; LT 39-40; S 60' LT 40 & N 10' LT 39","doc_type":"DT","date":"2005-09-07 00:00:00","t_id":1040673}
+
+{"type":"grantor","name":"CLARK STACEY","entity_id":368724,"description":"CITY RAYTOWN; SBD SOUTH BROOKE ESTATES 08-0787 RA; LT 39-40; S 60' LT 40 & N 10' LT 39","doc_type":"DT","date":"2005-09-07 00:00:00","t_id":1040673}
+
+{"type":"grantee","name":"UMB BANK NA","entity_id":216810,"description":"CITY RAYTOWN; SBD SOUTH BROOKE ESTATES 08-0787 RA; LT 39-40; S 60' LT 40 & N 10' LT 39","doc_type":"DT","date":"2016-02-19 00:00:00","t_id":2150745}
+
+{"type":"grantor","name":"CLARK JOSEPH","entity_id":405496,"description":"CITY RAYTOWN; SBD SOUTH BROOKE ESTATES 08-0787 RA; LT 39-40; S 60' LT 40 & N 10' LT 39","doc_type":"DT","date":"2016-02-19 00:00:00","t_id":2150745}
+
+{"type":"grantee","name":"UMB BANK NA","entity_id":216810,"description":"CITY RAYTOWN; SBD SOUTH BROOKE ESTATES 08-0787 RA; LT 39-40; S 60' LT 40 & N 10' LT 39","doc_type":"REQT","date":"2016-02-19 00:00:00","t_id":2152084}
+
+{"type":"grantor","name":"CLARK JOSEPH","entity_id":405496,"description":"CITY RAYTOWN; SBD SOUTH BROOKE ESTATES 08-0787 RA; LT 39-40; S 60' LT 40 & N 10' LT 39","doc_type":"REQT","date":"2016-02-19 00:00:00","t_id":2152084}
+
+{"type":"grantor","name":"UMB BANK NA","entity_id":216810,"description":"CITY RAYTOWN; SBD SOUTH BROOKE ESTATES 08-0787 RA; LT 39-40; S 60' LT 40 & N 10' LT 39","doc_type":"REL","date":"2016-03-04 00:00:00","t_id":2152364}
+
+{"type":"grantee","name":"CLARK JOSEPH","entity_id":405496,"description":"CITY RAYTOWN; SBD SOUTH BROOKE ESTATES 08-0787 RA; LT 39-40; S 60' LT 40 & N 10' LT 39","doc_type":"REL","date":"2016-03-04 00:00:00","t_id":2152364}
+
+{"type":"grantor","name":"CITIMORTGAGE INC","entity_id":24937,"description":"CITY RAYTOWN; SBD SOUTH BROOKE ESTATES 08-0787 RA; LT 39-40; S 60' LT 40 & N 10' LT 39","doc_type":"APPT","date":"2016-12-02 00:00:00","t_id":2223147}
+
+{"type":"grantee","name":"MARTIN LEIGH PC","entity_id":652875,"description":"CITY RAYTOWN; SBD SOUTH BROOKE ESTATES 08-0787 RA; LT 39-40; S 60' LT 40 & N 10' LT 39","doc_type":"APPT","date":"2016-12-02 00:00:00","t_id":2223147}
+
+{"type":"grantor","name":"CLARK STACEY","entity_id":368724,"description":"CITY RAYTOWN; SBD SOUTH BROOKE ESTATES 08-0787 RA; LT 39-40; S 60' OF LT 40 & N 10' OF LT 39","doc_type":"WD","date":"2003-09-11 00:00:00","t_id":1001612}
+
+{"type":"grantee","name":"CLARK JOSEPH","entity_id":405496,"description":"CITY RAYTOWN; SBD SOUTH BROOKE ESTATES 08-0787 RA; LT 39-40; S 60' OF LT 40 & N 10' OF LT 39","doc_type":"WD","date":"2003-09-11 00:00:00","t_id":1001612}
+
+{"type":"grantor","name":"CLARK STACEY","entity_id":368724,"description":"CITY RAYTOWN; SBD SOUTH BROOKE ESTATES 08-0787 RA; LT 39-40; S 60' OF LT 40 & N 10' OF LT 39","doc_type":"AFFD","date":"2003-08-29 00:00:00","t_id":1001613}
+
+{"type":"grantee","name":"CLARK STACEY","entity_id":368724,"description":"CITY RAYTOWN; SBD SOUTH BROOKE ESTATES 08-0787 RA; LT 39-40; S 60' OF LT 40 & N 10' OF LT 39","doc_type":"AFFD","date":"2003-08-29 00:00:00","t_id":1001613}
+
+{"type":"grantor","name":"CLARK JOSEPH","entity_id":405496,"description":"CITY RAYTOWN; SBD SOUTH BROOKE ESTATES 08-0787 RA; LT 39-40; S 60' OF LT 40 & N 10' OF LT 39","doc_type":"DT","date":"2005-08-23 00:00:00","t_id":1017803}
+
+{"type":"grantee","name":"UMB BANK","entity_id":448133,"description":"CITY RAYTOWN; SBD SOUTH BROOKE ESTATES 08-0787 RA; LT 39-40; S 60' OF LT 40 & N 10' OF LT 39","doc_type":"DT","date":"2005-08-23 00:00:00","t_id":1017803}
+
+{"type":"grantee","name":"CLARK JOSEPH","entity_id":405496,"description":"CITY RAYTOWN; SBD SOUTH BROOKE ESTATES 08-0787 RA; LT 39-40; S 60' OF LT 40 & N 10' OF LT 39","doc_type":"REQT","date":"2014-06-16 00:00:00","t_id":2008401}
+
+{"type":"grantor","name":"PITTENGER BRANDON T","entity_id":742120,"description":"CITY RAYTOWN; SBD SOUTH BROOKE ESTATES 08-0787 RA; LT 39-40; S 60' OF LT 40 & N 10' OF LT 39","doc_type":"REQT","date":"2014-06-16 00:00:00","t_id":2008401}
+
+{"type":"grantor","name":"UMB BANK N A","entity_id":9304,"description":"CITY RAYTOWN; SBD SOUTH BROOKE ESTATES 08-0787 RA; LT 39-40; S 60' OF LT 40 & N 10' OF LT 39","doc_type":"REQT","date":"2014-06-16 00:00:00","t_id":2009001}
+
+{"type":"grantee","name":"CLARK JOSEPH","entity_id":405496,"description":"CITY RAYTOWN; SBD SOUTH BROOKE ESTATES 08-0787 RA; LT 39-40; S 60' OF LT 40 & N 10' OF LT 39","doc_type":"REQT","date":"2014-06-16 00:00:00","t_id":2009001}
+
+{"type":"grantee","name":"CITIFINANCIAL MORTGAGE COMPANY INC","entity_id":245709,"description":"CITY RAYTOWN; SBD SOUTH BROOKE ESTATES 08-0787 RA; LT 39-40; S 60' OF 40 & N 10' OF LT 39","doc_type":"ASDT","date":"2005-05-09 00:00:00","t_id":983784}
+
+{"type":"grantor","name":"HOMEOWNERS LOAN CORP","entity_id":561482,"description":"CITY RAYTOWN; SBD SOUTH BROOKE ESTATES 08-0787 RA; LT 39-40; S 60' OF 40 & N 10' OF LT 39","doc_type":"ASDT","date":"2005-05-09 00:00:00","t_id":983784}
+
+{"type":"grantee","name":"CLIFTON MARK","entity_id":344786,"description":"CITY RAYTOWN; SBD SOUTH BROOKE ESTATES 08-0787 RA; LT 39-40; S 60' LT 40 N 10' LT 39","doc_type":"FC","date":"2017-02-24 00:00:00","t_id":2246865}
+
+{"type":"grantor","name":"CLARK STACEY","entity_id":368724,"description":"CITY RAYTOWN; SBD SOUTH BROOKE ESTATES 08-0787 RA; LT 39-40; S 60' LT 40 N 10' LT 39","doc_type":"FC","date":"2017-02-24 00:00:00","t_id":2246865}
+
+{"type":"grantor","name":"CLARK JOSEPH","entity_id":405496,"description":"CITY RAYTOWN; SBD SOUTH BROOKE ESTATES 08-0787 RA; LT 39-40; S 60' LT 40 & N 10' OF LT 39","doc_type":"DT","date":"2003-09-11 00:00:00","t_id":983783}
+
+{"type":"grantee","name":"HOMEOWNERS LOAN CORP","entity_id":561482,"description":"CITY RAYTOWN; SBD SOUTH BROOKE ESTATES 08-0787 RA; LT 39-40; S 60' LT 40 & N 10' OF LT 39","doc_type":"DT","date":"2003-09-11 00:00:00","t_id":983783}
+
+
+Active Mortgages 
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+{"type":"grantee","name":"CITIFINANCIAL MORTGAGE COMPANY INC","entity_id":245709,"description":"CITY RAYTOWN; SBD SOUTH BROOKE ESTATES 08-0787 RA; LT 39-40; S 60' LT 40 & N 10' LT 39","doc_type":"DT","date":"2005-09-07 00:00:00","t_id":1040673}
+
+{"type":"grantee","name":"UMB BANK","entity_id":448133,"description":"CITY RAYTOWN; SBD SOUTH BROOKE ESTATES 08-0787 RA; LT 39-40; S 60' OF LT 40 & N 10' OF LT 39","doc_type":"DT","date":"2005-08-23 00:00:00","t_id":1017803}
+

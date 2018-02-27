@@ -1,0 +1,18 @@
+
+Parcel 
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+{"id":313293,"city":"LEES SUMMIT","subdivision":"WINDWOOD 3RD PLAT I72\/41 OG","block":null,"lot":"88-88","frontage":null}
+
+
+Parcel Transfers 
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+{"type":"grantee","name":"CORBIN MARTHA","entity_id":613310,"description":"CITY LEES SUMMIT; SBD WINDWOOD 3RD PLAT I72\/41 OG; LT 88-88","doc_type":"REL","date":"2015-12-23 00:00:00","t_id":2137350}
+
+{"type":"grantor","name":"NATIONAL CITY MORTGAGE CO","entity_id":644045,"description":"CITY LEES SUMMIT; SBD WINDWOOD 3RD PLAT I72\/41 OG; LT 88-88","doc_type":"REL","date":"2015-12-23 00:00:00","t_id":2137350}
+
+
+Active Mortgages 
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
