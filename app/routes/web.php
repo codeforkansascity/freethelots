@@ -249,7 +249,57 @@ Route::get('/random/', function(){
     return compact('parcel', 'tcount', 'transfers','mcount','mortgages');
 });
 
+Route::get('/landbank', function(){
 
+    $aliases = [
+        'LAND BANK KANSAS CITY',
+//        'LAND BANK OF BLUE SPRINGS',
+//        'LAND BANK OF BLUE SPRINGS MISSOURI',
+        'LAND BANK OF KANAS CITY MISSOURI',
+        'LAND BANK OF KANSAS CITY',
+        'LAND BANK OF KANSAS CITY  MISSOURI',
+        'LAND BANK OF KANSAS CITY MISOURI',
+        'LAND BANK OF KANSAS CITY MISSOUI',
+        'LAND BANK OF KANSAS CITY MISSOUIR',
+        'LAND BANK OF KANSAS CITY MISSOURI',
+        'LAND BANK OF KANSAS CITY MO',
+        'LAND BANK OF KANSAS CITY MSSOURI',
+        'LAND BANK OF KCMO',
+        'LAND BANK OFKANSAS CITY MISSOURI',
+        'LAND BANK OK KANSAS CITY',
+        'LAND BANK'
+    ];
+
+    $entities = \App\Entity::whereIn('name', $aliases)->get();
+
+
+    $parcels = \App\Parcel::allParcels($entities)->get();
+    return dd($parcels);
+});
+
+Route::get('/sample-transfer', function(){
+
+    $landbank = \App\LandbankParcel::inRandomOrder()->first();
+    $transfers = $landbank->parcel->transfers()->orderBy('date')->get();
+    $tcount = count($transfers);
+
+    $mortgages = $landbank->parcel->mortgages();
+    $mcount = count($mortgages);
+
+    return compact('landbank', 'transfers', 'tcount', 'mortgages', 'mccount');
+});
+
+Route::get('/sample-transfer/{id}', function($id){
+
+    $parcel = \App\Parcel::find($id);
+    $transfers = $parcel->transfers()->orderBy('date')->get();
+    $tcount = count($transfers);
+
+    $mortgages = $parcel->mortgages();
+    $mcount = count($mortgages);
+
+    return compact('landbank', 'transfers', 'tcount', 'mortgages', 'mcount');
+});
 
 
 

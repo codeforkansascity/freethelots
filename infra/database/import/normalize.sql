@@ -1,3 +1,5 @@
+-- noinspection SqlNoDataSourceInspectionForFile
+
 truncate document_type restart identity cascade;
 truncate entity restart identity cascade;
 truncate entity_dirty restart identity cascade;

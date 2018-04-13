@@ -19,21 +19,21 @@ Artisan::command('inspire', function () {
 
 Artisan::command('sample-transfers', function(){
 
-    $parcels = \App\Parcel::inRandomOrder()->limit(10)->get();
+    $landbanks = \App\LandbankParcel::inRandomOrder()->limit(10)->get();
 
-    foreach($parcels as $parcel){
+    foreach($landbanks as $landbank){
 
-        $transfers = $parcel->transfers()->get();
+        $transfers = $landbank->parcel->transfers()->orderBy('date')->get();
         $tcount = count($transfers);
 
-        $mortgages = $parcel->mortgages();
+        $mortgages = $landbank->parcel->mortgages();
         $mcount = count($mortgages);
 
-        $file = fopen('/home/vagrant/Code/freethelots/test-data/parcel-'.$parcel->id.".txt", 'w');
+        $file = fopen('/home/vagrant/Code/freethelots/test-data/parcel-'.$landbank->parcel->id.".txt", 'w');
 
         fwrite($file, PHP_EOL.'Parcel '.PHP_EOL.str_repeat("-=", 40).PHP_EOL.PHP_EOL);
 
-        fwrite($file, json_encode($parcel));
+        fwrite($file, json_encode($landbank->parcel));
         fwrite($file, PHP_EOL.PHP_EOL);
 
         fwrite($file, PHP_EOL.'Parcel Transfers '.PHP_EOL.str_repeat("-=", 40).PHP_EOL.PHP_EOL);
@@ -53,4 +53,25 @@ Artisan::command('sample-transfers', function(){
 
 
     //return compact('parcel', 'tcount', 'transfers','mcount','mortgages');
+});
+
+Artisan::command('landbank', function(){
+
+    $entities = \App\Entity::where('name', 'like', 'LAND BANK%')->get();
+
+    $parcels = \App\Parcel::allParcels($entities)->get();
+
+    foreach($parcels as $parcel){
+
+        if(empty(DB::table('landbank_parcel')->where('parcel_id', $parcel->entity_id)->first() ) ){
+            info('inserting id: '. $parcel->parcel_id);
+            DB::table('landbank_parcel')
+                ->insert([
+                    'parcel_id' => $parcel->parcel_id,
+                ]);
+        }
+
+    }
+
+
 });
