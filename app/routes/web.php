@@ -295,7 +295,7 @@ Route::get('/sample-transfer/{id}', function($id){
     $transfers = $parcel->transfers()->orderBy('date')->get();
     $tcount = count($transfers);
 
-    $mortgages = $parcel->mortgages();
+    $mortgages = $parcel->mortgageHistory(true);
     $mcount = count($mortgages);
 
     return compact('landbank', 'transfers', 'tcount', 'mortgages', 'mcount');
