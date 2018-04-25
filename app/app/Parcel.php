@@ -57,7 +57,7 @@ class Parcel extends Model
         foreach ($transfers as $transfer){
             $released = false;
 
-            if($transfer->type == 'grantee' && in_array($transfer->doc_type ,['DT', 'WD']) ){
+            if($transfer->type == 'grantee' && in_array($transfer->doc_type ,['DT', 'ASDT']) ){
 
                 $t_count++;
 
@@ -127,7 +127,7 @@ class Parcel extends Model
         foreach ($transfers as $transfer){
             $released = false;
 
-            if($transfer->type == 'grantee' && in_array($transfer->doc_type ,['DT', 'WD']) ){
+            if($transfer->type == 'grantee' && in_array($transfer->doc_type ,['DT', 'ASDT']) ){
 
                 $history[] = "$t_count : $transfer->name is $transfer->type on $transfer->date type $transfer->doc_type ";
                 $t_count++;

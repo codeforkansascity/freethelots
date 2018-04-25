@@ -301,6 +301,48 @@ Route::get('/sample-transfer/{id}', function($id){
     return compact('landbank', 'transfers', 'tcount', 'mortgages', 'mcount');
 });
 
+Route::get('/current-landbank', function(){
+
+    $ids = DB::table('entity')->where('name', 'like', '%LAND BANK%')->get()->pluck('id')->toArray();
+
+    $parcels = \App\Parcel::whereIn('id', \App\LandbankParcel::get()->pluck('parcel_id')->toArray())
+        ->limit(100)->with('transfers')->get();
+
+
+    dd($parcels);
+    $list = [];
+    foreach($parcels as $parcel){
+
+        $current = true;
+        $transfers = $parcel->transfers()->orderBy('date')->get();
+        foreach($transfers as $transfer){
+            if(in_array($transfer->entity_id, $ids) && $transfer->type == 'grantor'){
+                $current = false;
+            }
+
+        }
+
+        if($current){
+            $list[] = $transfer->description;
+        }
+    }
+    return $list;
+
+//    $mortgages = $parcel->mortgageHistory(true);
+//    $mcount = count($mortgages);
+//
+//    return compact('landbank', 'transfers', 'tcount', 'mortgages', 'mcount');
+});
+
+/*
+ "type": "grantee"
+  +"name": "LAND BANK OF KANSAS CITY MISSOURI"
+  +"entity_id": 666531
+  +"description": "CITY UNKNOWN CODES; SBD LAMBERT BROTHERS ADD TO LAMBERT GROVE 05-3064 KC; LT 11-11"
+  +"doc_type": "WD"
+  +"date": "2013-05-01 00:00:00"
+  +"t_id": 1907721
+ **/
 
 
 
