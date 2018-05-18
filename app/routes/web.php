@@ -306,10 +306,10 @@ Route::get('/current-landbank', function(){
     $ids = DB::table('entity')->where('name', 'like', '%LAND BANK%')->get()->pluck('id')->toArray();
 
     $parcels = \App\Parcel::whereIn('id', \App\LandbankParcel::get()->pluck('parcel_id')->toArray())
-        ->limit(100)->with('transfers')->get();
+        ->limit(50)->get();
 
 
-    dd($parcels);
+    //dd($parcels);
     $list = [];
     foreach($parcels as $parcel){
 
@@ -323,15 +323,11 @@ Route::get('/current-landbank', function(){
         }
 
         if($current){
-            $list[] = $transfer->description;
+            $list[] = $parcel;
         }
     }
     return $list;
 
-//    $mortgages = $parcel->mortgageHistory(true);
-//    $mcount = count($mortgages);
-//
-//    return compact('landbank', 'transfers', 'tcount', 'mortgages', 'mcount');
 });
 
 /*

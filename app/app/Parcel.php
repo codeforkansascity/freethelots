@@ -78,8 +78,7 @@ class Parcel extends Model
                     }
                 }
 
-                //dd($mers);
-                // if grantee matches a grantor of future date
+
                 $matches = $transfers->filter(function($key) use($transfer){
                     $transfer_clipped = str_replace(' NA', '',$transfer->name);
                     $clipped = str_replace(' NA', '',$key->name);
@@ -113,20 +112,25 @@ class Parcel extends Model
         return $active;
     }
 
+    /*
+     * Writes output file with mortgage history
+     * */
     public function mortgageHistory($write = false){
         $history = [];
         $t_count = 1;
 
         $transfers = $this->transfers()->orderBy('date')->get();
-        //dd($transfers);
+
 
         // get all mers alias ids
         $merd_ids = Entity::where('name', 'like', '%MORTGAGE ELEC%')->get()->pluck('id')->toArray();
 
         $active = [];
+        // loop through transfers of this parcel
         foreach ($transfers as $transfer){
             $released = false;
 
+            // if mortgage is set indicated by grantee with deed of trust or asdt
             if($transfer->type == 'grantee' && in_array($transfer->doc_type ,['DT', 'ASDT']) ){
 
                 $history[] = "$t_count : $transfer->name is $transfer->type on $transfer->date type $transfer->doc_type ";
@@ -146,6 +150,7 @@ class Parcel extends Model
                 $mers = $transfers->whereIn( 'entity_id', $merd_ids)->where('doc_type', 'ASDT')
                     ->where('date', '>', $transfer->date)->first();
                 if(!empty($mers)){
+                    // if no other mortgage exist we consider this one released
                     if(count($active) < 1){
 
                         $released = true;
@@ -154,9 +159,10 @@ class Parcel extends Model
                     }
                 }
 
-                //dd($mers);
-                // if grantee matches a grantor of future date
+
+                // if grantee matches a grantor of future date add to matches
                 $matches = $transfers->filter(function($key) use($transfer){
+                    // we remove na from the entity name in case the name discrepancies
                     $transfer_clipped = str_replace(' NA', '',$transfer->name);
                     $clipped = str_replace(' NA', '',$key->name);
                     if($transfer_clipped == $clipped && $key->date >= $transfer->date){
@@ -165,8 +171,8 @@ class Parcel extends Model
                         return false;
                     }
                 });
-                //$matches = $transfers->where('name', $transfer->name)->where('date', '>', $transfer->date);
 
+                // check matches against type
                 if(!empty($matches) && !$released){
                     foreach($matches as $match){
                         // if not same entry
@@ -178,7 +184,6 @@ class Parcel extends Model
 
 
                         }
-                        //if($match->doc_type == 'TD' && $match->doc)
                     }
                 }
 

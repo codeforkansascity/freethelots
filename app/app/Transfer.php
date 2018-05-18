@@ -17,4 +17,10 @@ class Transfer extends Model
     public function grantors(){
 
     }
+
+    public function parcel_combined()
+    {
+        return $this->belongsToMany('App\ParcelCombined','transfer_parcel',   'transfer_id', 'parcel_id');
+
+    }
 }
