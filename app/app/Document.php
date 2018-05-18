@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Party extends Model
+class Document extends Model
 {
-    protected $table = 'party';
+    protected $table = 'document';
 }

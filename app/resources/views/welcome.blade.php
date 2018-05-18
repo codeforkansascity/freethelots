@@ -50,9 +50,9 @@
                     <div class="col-lg-12">
                         <div class="input-group">
                                 <span class="input-group-btn">
-                      <button class="btn btn-info" type="button"><span class="glyphicon glyphicon-search"></span>                                Search!</button>
+                      <button class="btn btn-info" type="button"  onclick="searchParcels($('#business_name').val())"><span class="glyphicon glyphicon-search"></span>                                Search!</button>
                                 </span>
-                            <input type="text" class="form-control" placeholder="Search for properties by: Lender name / Busisness Name">
+                            <input  id="business_name" type="text" class="form-control" placeholder="Search for properties by: Lender name / Busisness Name">
                         </div>
                         <!-- /input-group -->
                     </div>
@@ -63,7 +63,7 @@
                     <div class="col-lg-12">
                         <div class="input-group">
                                 <span class="input-group-btn">
-                          <button class="btn btn-info" type="button" onclick="searchParcels()"><span class="glyphicon glyphicon-search" ></span>                                Search!</button>
+                          <button class="btn btn-info" type="button" onclick="searchParcels($('#individual_name').val())"><span class="glyphicon glyphicon-search" ></span>                                Search!</button>
                                 </span>
                             <input id="individual_name" type="text" class="form-control" placeholder="Search for properties by: Individual Name [First, Last]">
                         </div>
@@ -73,7 +73,7 @@
                 </div>
                 <!-- /.row -->
                 <div class="btn-group" role="group" aria-label="...">
-                    <button type="button" class="btn btn-info btn-search">Claimants by Number of Claims</button>
+                    <button type="button" class="btn btn-info btn-search" onclick="exportCsv(deeds)">Claimants by Number of Claims</button>
                     <!-- <button type="button" class="btn btn-info btn-search">Busisness Name</button> -->
                     <!-- <button type="button" class="btn btn-info btn-search">Right</button> -->
                 </div>
@@ -134,27 +134,108 @@
      * /parties/search/
      */
     /* Example Request */
-    function searchParcels() {
-        var search = $('#individual_name').val();
+    var deeds = '';
+
+    function searchParcels(search) {
+        //var search = $('#individual_name').val();
         $.get('/parcels/search/'+search, function (data) {
             console.log(data);
             var property_container = $('#property-container');
             property_container.empty();
             data.forEach(function (row) {
                 console.log(row);
-                var legal = row['town']+ ';' + row['subdivision']+ ';' + row['lot']+ ';' + row['lotto'] ;
-                property_container.append('<div id="item-'+ row['transfer_id']+'" class="row"></div>');
+                var legal = row['combined_legal'] ;
+                property_container.append('<div id="item-'+ row['id']+'" class="row"></div>');
 
-                var item = $('#item-'+ row['transfer_id']);
-                item.append('<div class="col-xs-3 ">'+ row['first_name']+' '+ row['last_name'] +'</div>');
-                item.append('<div class="col-xs-2 text-center ">'+ row['date_received'] +'</div>');
-                item.append('<div class="col-xs-3 text-center ">'+ row['name'] +'</div>');
+                var item = $('#item-'+ row['id']);
+                item.append('<div class="col-xs-3 ">'+ row['grantee'] +'</div>');
+                item.append('<div class="col-xs-2 text-center ">'+ row['document_date'] +'</div>');
+                item.append('<div class="col-xs-3 text-center ">'+ row['document_type'] +'</div>');
                 item.append('<div class="col-xs-4 ">'+ legal +'</div>');
                 property_container.append('<div class="col-xs-12"><hr></div>');
 
             })
+            deeds = data;
 
         })
+    }
+    function exportCsv (JSONData) {
+
+
+        var ReportTitle = 'csv';
+        var ShowLabel = 'csv';
+
+        //If JSONData is not an object then JSON.parse will parse the JSON string in an Object
+        var arrData = typeof JSONData != 'object' ? JSON.parse(JSONData) : JSONData;
+
+        var CSV = '';
+        //Set Report title in first row or line
+
+        CSV += ReportTitle + '\r\n\n';
+
+        //This condition will generate the Label/Header
+        if (ShowLabel) {
+            var row = "";
+
+            //This loop will extract the label from 1st index of on array
+            for (var index in arrData[0]) {
+
+                //Now convert each value to string and comma-seprated
+                row += index + ',';
+            }
+
+            row = row.slice(0, -1);
+
+            //append Label row with line break
+            CSV += row + '\r\n';
+        }
+
+        //1st loop is to extract each row
+        for (var i = 0; i < arrData.length; i++) {
+            var row = "";
+
+            //2nd loop will extract each column and convert it in string comma-seprated
+            for (var index in arrData[i]) {
+                row += '"' + arrData[i][index] + '",';
+            }
+
+            row.slice(0, row.length - 1);
+
+            //add a line break after each row
+            CSV += row + '\r\n';
+        }
+
+        if (CSV == '') {
+            alert("Invalid data");
+            return;
+        }
+
+        //Generate a file name
+        var fileName = "MyReport_";
+        //this will remove the blank-spaces from the title and replace it with an underscore
+        fileName += ReportTitle.replace(/ /g,"_");
+
+        //Initialize file format you want csv or xls
+        var uri = 'data:text/csv;charset=utf-8,' + escape(CSV);
+
+        // Now the little tricky part.
+        // you can use either>> window.open(uri);
+        // but this will not work in some browsers
+        // or you will not get the correct file extension
+
+        //this trick will generate a temp <a /> tag
+        var link = document.createElement("a");
+        link.href = uri;
+
+        //set the visibility hidden so it will not effect on your web-layout
+        link.style = "visibility:hidden";
+        link.download = fileName + ".csv";
+
+        //this part will append the anchor tag and remove it after automatic click
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+
     }
 
 </script>

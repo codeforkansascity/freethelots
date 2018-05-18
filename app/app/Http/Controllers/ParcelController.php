@@ -2,52 +2,77 @@
 
 namespace App\Http\Controllers;
 
+use App\Deed;
+use App\Entity;
+use App\Parcel;
+use App\ParcelCombined;
 use App\Transfer;
 use Illuminate\Http\Request;
 Use DB;
+use League\Csv\Reader;
+use League\Csv\Statement;
+use League\Csv\Writer;
 
 class ParcelController extends Controller
 {
-    protected function index(){
+    protected function index()
+    {
 
         $parcels = DB::table('parcel')->get();
 
         return $parcels;
 
     }
-    protected function searchGrantor($search){
 
-        $split = explode(',', $search);
+    protected function show(Parcel $parcel)
+    {
+        return response()->json(['parcel' => $parcel ], 200 );
 
-        /* Uses wildcards searches for partial match */
-        if(count($split) > 1){
-            $parties = DB::table('parcel')
-                ->select('parcel.*', 'party.first_name', 'party.last_name', 'document_type.name', 'transfer.date_received'
-                    ,'transfer.id as transfer_id')
-                ->leftJoin('transfer', 'transfer.parcel_id', 'parcel.id')
-                ->leftJoin('party', 'transfer.grantor_id', 'party.id')
-                ->leftjoin('document_type', 'document_type.id', 'transfer.document_type_id')
-                ->where(function($query) use($split) {
-                    $query->where( 'party.first_name', 'ilike' , '%'.$split[0].'%' )
-                    ->Where('party.last_name', 'ilike', '%'.$split[1].'%' );
-                })
-                ->get();
-        }
-        else{
-            $parties = DB::table('parcel')
-                ->select('parcel.* as parcel', 'party.first_name', 'party.last_name', 'document_type.name', 'transfer.date_received'
-                        ,'transfer.id as transfer_id')
-                ->leftJoin('transfer', 'transfer.parcel_id', 'parcel.id')
-                ->leftJoin('party', 'transfer.grantor_id', 'party.id')
-                ->leftJoin('document_type', 'document_type.id', 'transfer.document_type_id')
-                ->where(function($query) use($search) {
-                    $query->where( 'party.first_name', 'ilike' , '%'.$search.'%' )
-                    ->orWhere('party.last_name', 'ilike', '%'.$search.'%' );
-                })
-                ->get();
-        }
+    }
+    protected function searchGrantor($search)
+    {
 
-        return $parties;
+        $search = strtoupper($search);
+
+        $entity = Entity::where('name', 'like', $search . '%')->first();
+
+
+        return $entity->parcels()->get();
+
+
+    }
+
+    protected function searchByEntity(Entity $entity)
+    {
+
+        return $entity->parcels();
+
+    }
+
+    protected function convertToCSV($request)
+    {
+
+
+        $csv = Writer::createFromFileObject(new \SplTempFileObject());
+
+        $csv->insertOne(\Schema::getColumnListing('deeds'));
+        $deeds = Deed::where('grantee', 'like', 'Land Bank%')
+            ->limit(500)->get();
+        $csv->insertAll($deeds->toArray());
+
+        $csv->output('output.csv');
+
+    }
+
+    protected function mortgages(Parcel $parcel)
+    {
+
+        return response()->json(['parcel' => $parcel, 'mortgages' => $parcel->mortgages() ], 200);
+    }
+
+    protected function transfers(Parcel $parcel)
+    {
+        return response()->json(['parcel' => $parcel , 'transfers' => $parcel->transfers()->get()] , 200);
     }
 
 }

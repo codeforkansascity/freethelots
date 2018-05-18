@@ -16,3 +16,7 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('parcels/{parcel}/transfers', 'ParcelController@transfers');
+Route::get('parcels/{parcel}/mortgages', 'ParcelController@mortgages');
+Route::get('parcels/{parcel}', 'ParcelController@show');
